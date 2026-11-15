@@ -486,11 +486,11 @@ All API paths are mounted under `/api`. The complete definitions are in
 
 ![SPARK landing page](./screenshots/Screenshot%202026-11-15%20172912.png)
 
-*Landing page with the SPARK wordmark, hero copy, actions, and placement statistics.*
+*Landing page*
 
 ![Student drive browser](./screenshots/Screenshot%202026-11-15%20172224.png)
 
-*Student drive browser showing search, eligibility information, and drive cards.*
+*Explore drives page*
 
 ## Design System
 
