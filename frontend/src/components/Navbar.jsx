@@ -27,14 +27,14 @@ export default function Navbar() {
     : 'User';
 
   return (
-    <header className="h-16 bg-card border-b border-border px-6 flex items-center justify-between sticky top-0 z-20">
-      <div className="flex items-center gap-2">
-        <h2 className="text-base font-semibold text-foreground">
+    <header className="h-16 bg-card/80 backdrop-blur-md border-b border-border px-6 flex items-center justify-between sticky top-0 z-20">
+      <div className="flex flex-col items-start">
+        <h2 className="text-base font-semibold text-foreground leading-tight">
           Welcome, <span className="text-primary font-bold">{displayName}</span>
         </h2>
-        {user?.roll_number && (
-          <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-mono font-medium">
-            {user.roll_number}
+        {(user?.roll_number || user?.uid || user?.user_id) && (
+          <span className="mt-0.5 text-[11px] bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-mono font-medium">
+            {user.roll_number || user.uid || user.user_id}
           </span>
         )}
       </div>
@@ -51,7 +51,7 @@ export default function Navbar() {
         <button
           onClick={handleLogout}
           title="Sign out of CampusHire"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-destructive hover:border-destructive/30 hover:bg-destructive/10 text-xs font-medium transition-all pressable"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full token-primary-surface hover:opacity-90 text-xs font-semibold transition-all pressable"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Logout</span>

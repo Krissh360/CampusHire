@@ -157,7 +157,7 @@ export default function StudentApplicationsPage() {
                         <div
                           key={stage}
                           className={`flex-1 transition-all ${
-                            idx <= currentStageIdx ? 'bg-primary' : 'bg-transparent'
+                            idx <= currentStageIdx ? 'token-primary-surface' : 'bg-muted'
                           }`}
                         />
                       ))}

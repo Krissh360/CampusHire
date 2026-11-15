@@ -417,7 +417,7 @@ export default function StudentProfilePage() {
 
               <button
                 type="submit"
-                className="w-full py-2 px-3 rounded-lg bg-card text-primary-foreground text-xs font-bold hover:bg-card transition-all flex items-center justify-center gap-1.5"
+                className="w-full py-2 px-3 rounded-full token-primary-surface hover:opacity-90 text-xs font-bold transition-all flex items-center justify-center gap-1.5 pressable"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Skill to Profile</span>
