@@ -102,7 +102,7 @@ export default function StudentDashboard() {
     <div className="space-y-8">
       {/* Placement Status Banner */}
       {user?.is_placed ? (
-        <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="relative overflow-hidden p-6 rounded-xl dashboard-card token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <BackgroundPaths opacity={0.15} colorClass="text-primary-foreground" count={12} />
           <div className="absolute -right-10 -top-16 h-40 w-40 rounded-full bg-primary-foreground/10" />
           <div className="absolute right-24 -bottom-24 h-52 w-52 rounded-full bg-primary-foreground/10" />
@@ -124,7 +124,7 @@ export default function StudentDashboard() {
           </Link>
         </div>
       ) : (
-        <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="relative overflow-hidden p-6 rounded-xl dashboard-card token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <BackgroundPaths opacity={0.15} colorClass="text-primary-foreground" count={12} />
           <div className="absolute -right-12 -top-20 h-48 w-48 rounded-full bg-primary-foreground/10" />
           <div className="absolute right-40 -bottom-28 h-56 w-56 rounded-full bg-primary-foreground/10" />
@@ -145,7 +145,7 @@ export default function StudentDashboard() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-        <div className="interactive-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Total Applied</p>
             <p className="text-3xl font-extrabold text-foreground mt-1 tracking-tight">{stats.totalApplied}</p>
@@ -156,7 +156,7 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        <div className="interactive-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Shortlisted</p>
             <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.shortlisted}</p>
@@ -167,7 +167,7 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        <div className="interactive-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Interviews</p>
             <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.interviewScheduled}</p>
@@ -178,7 +178,7 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        <div className="interactive-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Offers Awarded</p>
             <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.selectedOffers}</p>
@@ -192,8 +192,8 @@ export default function StudentDashboard() {
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Recent Applications */}
-        <div className="lg:col-span-2 bg-card rounded-xl border border-border shadow-sm overflow-hidden">
-          <div className="p-5 border-b border-border flex items-center justify-between">
+        <div className="lg:col-span-2 dashboard-card bg-card rounded-xl border border-border shadow-sm overflow-hidden">
+          <div className="p-4 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-2">
               <FileText className="w-5 h-5 text-primary" />
               <h3 className="text-base font-bold text-foreground">Recent Applications</h3>
@@ -206,7 +206,7 @@ export default function StudentDashboard() {
 
           <div className="divide-y divide-border">
             {recentApps.length === 0 ? (
-              <div className="p-8 text-center">
+              <div className="p-6 text-center">
                 <div className="mx-auto w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
                   <Briefcase className="w-5 h-5" />
                 </div>
@@ -253,9 +253,9 @@ export default function StudentDashboard() {
         </div>
 
         {/* Upcoming Interviews & Quick Profile */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* Upcoming Interviews */}
-          <div className="bg-card rounded-xl border border-border shadow-sm p-5">
+          <div className="dashboard-card bg-card rounded-xl border border-border shadow-sm p-4">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-chart-3" />
@@ -267,7 +267,7 @@ export default function StudentDashboard() {
             </div>
 
             {interviews.length === 0 ? (
-              <div className="text-center py-5">
+              <div className="text-center py-4">
                 <div className="mx-auto w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
                   <Calendar className="w-5 h-5" />
                 </div>
@@ -308,7 +308,7 @@ export default function StudentDashboard() {
           </div>
 
           {/* Academic Snapshot Card */}
-          <div className="bg-card rounded-xl border border-border shadow-sm p-5">
+          <div className="dashboard-card bg-card rounded-xl border border-border shadow-sm p-4">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-bold text-foreground">Academic Profile</h3>
               <Link to="/student/profile" className="text-xs font-bold text-primary hover:text-primary">Edit</Link>

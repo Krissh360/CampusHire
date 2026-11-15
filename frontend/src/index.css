@@ -82,6 +82,10 @@
       color: hsl(var(--primary-foreground));
     }
 
+    .dashboard-card {
+      border-radius: calc(var(--radius) * 0.6) !important;
+    }
+
     .interactive-card {
       transition: transform 150ms ease, box-shadow 150ms ease;
     }
