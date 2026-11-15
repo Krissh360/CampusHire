@@ -28,12 +28,12 @@ export default function Navbar() {
 
   return (
     <header className="h-16 bg-card/80 backdrop-blur-md border-b border-border px-6 flex items-center justify-between sticky top-0 z-20">
-      <div className="flex flex-col items-start">
-        <h2 className="text-base font-semibold text-foreground leading-tight">
+      <div className="flex flex-col items-start translate-y-1">
+        <h2 className="text-lg font-semibold text-foreground leading-tight">
           Welcome, <span className="text-primary font-bold">{displayName}</span>
         </h2>
         {(user?.roll_number || user?.uid || user?.user_id) && (
-          <span className="mt-0.5 text-[11px] bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-mono font-medium">
+          <span className="mt-0.5 text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-mono font-medium">
             {user.roll_number || user.uid || user.user_id}
           </span>
         )}
