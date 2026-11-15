@@ -79,8 +79,13 @@ export default function LandingPage() {
       <section className="relative overflow-hidden bg-background pt-16 pb-20 lg:pt-24 lg:pb-32">
         <BackgroundPaths opacity={0.3} count={16} colorClass="text-primary" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent border border-border text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-            {APP_NAME} · {APP_FULL_NAME.toUpperCase()}
+          <div className="mb-10 text-center">
+            <p className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight leading-tight">
+              {APP_NAME}
+            </p>
+            <p className="mt-2 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-normal">
+              {APP_FULL_NAME.toUpperCase()}
+            </p>
           </div>
 
           <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight max-w-4xl mx-auto leading-tight">
