@@ -107,7 +107,7 @@ export default function Sidebar() {
 
       {/* Footer Info */}
       <div className="p-4 border-t border-border">
-        <div className="rounded-lg bg-accent p-3 text-xs text-accent-foreground">
+        <div className="card-shape rounded-lg bg-accent p-3 text-xs text-accent-foreground">
           <p className="font-semibold">Keep your profile ready</p>
           <p className="mt-1 text-accent-foreground/75">Complete your academic details before applying.</p>
         </div>
