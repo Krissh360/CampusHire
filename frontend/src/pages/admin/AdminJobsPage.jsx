@@ -53,27 +53,27 @@ export default function AdminJobsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Recruitment Drives Moderation</h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <h1 className="text-2xl font-extrabold text-foreground tracking-tight">Recruitment Drives Moderation</h1>
+          <p className="text-sm text-muted-foreground mt-1">
             Approve company drives before student visibility and manage campus recruitment timelines.
           </p>
         </div>
       </div>
 
       {actionMsg && (
-        <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-xs font-semibold text-blue-800">
+        <div className="p-4 rounded-lg bg-accent border border-border text-xs font-semibold text-primary">
           {actionMsg}
         </div>
       )}
 
       {/* Filter Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between text-xs">
+      <div className="bg-card p-4 rounded-xl border border-border shadow-sm flex items-center justify-between text-xs">
         <div className="flex items-center gap-3">
-          <Filter className="w-3.5 h-3.5 text-slate-400" />
+          <Filter className="w-3.5 h-3.5 text-muted-foreground" />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white"
+            className="px-3 py-1.5 rounded-lg border border-border focus:outline-none focus:ring-1 focus:ring-ring bg-card"
           >
             <option value="">All Drive Statuses</option>
             <option value="approved">Approved & Active</option>
@@ -83,7 +83,7 @@ export default function AdminJobsPage() {
           </select>
         </div>
 
-        <span className="text-slate-400 font-medium">
+        <span className="text-muted-foreground font-medium">
           {filteredJobs.length} Recruitment Drives
         </span>
       </div>
@@ -91,13 +91,13 @@ export default function AdminJobsPage() {
       {/* Drives Table */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-100">
+              <thead className="bg-background text-muted-foreground font-semibold border-b border-border">
                 <tr>
                   <th className="p-3.5 pl-6">Drive Title & Organization</th>
                   <th className="p-3.5">CTC Package</th>
@@ -107,28 +107,28 @@ export default function AdminJobsPage() {
                   <th className="p-3.5 text-right pr-6">Moderation Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-border">
                 {filteredJobs.map((j) => (
-                  <tr key={j.job_id} className="hover:bg-slate-50/80 transition-all">
+                  <tr key={j.job_id} className="hover:bg-background/80 transition-all">
                     <td className="p-3.5 pl-6">
-                      <div className="font-bold text-slate-900">{j.title}</div>
-                      <div className="text-[11px] text-slate-400 font-semibold">{j.company_name} • {j.role_type}</div>
+                      <div className="font-bold text-foreground">{j.title}</div>
+                      <div className="text-[11px] text-muted-foreground font-semibold">{j.company_name} • {j.role_type}</div>
                     </td>
                     <td className="p-3.5">
-                      <span className="font-extrabold text-blue-700 text-sm">₹ {j.package_lpa} LPA</span>
+                      <span className="font-extrabold text-primary text-sm">₹ {j.package_lpa} LPA</span>
                     </td>
                     <td className="p-3.5">
-                      <div className="text-slate-700 font-medium">CGPA: {j.min_cgpa}+</div>
-                      <div className="text-[11px] text-slate-400">Branches: {j.allowed_branches}</div>
+                      <div className="text-foreground font-medium">CGPA: {j.min_cgpa}+</div>
+                      <div className="text-[11px] text-muted-foreground">Branches: {j.allowed_branches}</div>
                     </td>
-                    <td className="p-3.5 text-slate-600 font-medium">
+                    <td className="p-3.5 text-muted-foreground font-medium">
                       {new Date(j.deadline).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
                     </td>
                     <td className="p-3.5">
                       <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
-                        j.status === 'approved' ? 'bg-emerald-50 text-emerald-700' :
-                        j.status === 'pending_approval' ? 'bg-amber-50 text-amber-700' :
-                        j.status === 'closed' ? 'bg-slate-100 text-slate-600' : 'bg-red-50 text-red-700'
+                        j.status === 'approved' ? 'bg-accent text-primary' :
+                        j.status === 'pending_approval' ? 'bg-chart-3/10 text-chart-3' :
+                        j.status === 'closed' ? 'bg-muted text-muted-foreground' : 'bg-destructive/10 text-destructive'
                       }`}>
                         {j.status}
                       </span>
@@ -138,7 +138,7 @@ export default function AdminJobsPage() {
                         {j.status !== 'approved' && (
                           <button
                             onClick={() => handleUpdateStatus(j.job_id, 'approved')}
-                            className="px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold"
+                            className="px-2.5 py-1 rounded bg-accent text-primary hover:bg-accent font-semibold"
                             title="Approve Drive"
                           >
                             Approve
@@ -147,7 +147,7 @@ export default function AdminJobsPage() {
                         {j.status !== 'rejected' && j.status !== 'closed' && (
                           <button
                             onClick={() => handleUpdateStatus(j.job_id, 'rejected')}
-                            className="px-2.5 py-1 rounded bg-red-50 text-red-700 hover:bg-red-100 font-semibold"
+                            className="px-2.5 py-1 rounded bg-destructive/10 text-destructive hover:bg-destructive/10 font-semibold"
                             title="Reject Drive"
                           >
                             Reject
@@ -156,7 +156,7 @@ export default function AdminJobsPage() {
                         {j.status === 'approved' && (
                           <button
                             onClick={() => handleUpdateStatus(j.job_id, 'closed')}
-                            className="px-2.5 py-1 rounded bg-slate-100 text-slate-700 hover:bg-slate-200 font-semibold"
+                            className="px-2.5 py-1 rounded bg-muted text-foreground hover:bg-secondary font-semibold"
                             title="Close Drive"
                           >
                             Close

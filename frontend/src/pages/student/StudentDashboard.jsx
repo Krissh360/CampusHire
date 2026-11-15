@@ -47,7 +47,7 @@ export default function StudentDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-24">
-        <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -55,15 +55,15 @@ export default function StudentDashboard() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Selected':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+        return 'bg-accent text-primary border-border';
       case 'Interview Scheduled':
-        return 'bg-blue-50 text-blue-700 border-blue-200';
+        return 'bg-accent text-primary border-border';
       case 'Shortlisted':
-        return 'bg-indigo-50 text-indigo-700 border-indigo-200';
+        return 'bg-accent text-primary border-border';
       case 'Rejected':
-        return 'bg-red-50 text-red-700 border-red-200';
+        return 'bg-destructive/10 text-destructive border-destructive/30';
       default:
-        return 'bg-amber-50 text-amber-700 border-amber-200';
+        return 'bg-chart-3/10 text-chart-3 border-chart-3/30';
     }
   };
 
@@ -71,34 +71,34 @@ export default function StudentDashboard() {
     <div className="space-y-8">
       {/* Placement Status Banner */}
       {user?.is_placed ? (
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-lg shadow-emerald-600/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm shadow-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+            <div className="w-12 h-12 rounded-lg bg-primary-foreground/10 backdrop-blur-md flex items-center justify-center text-primary-foreground">
               <Award className="w-7 h-7" />
             </div>
             <div>
               <h2 className="text-xl font-bold tracking-tight">Congratulations! You are officially Placed 🎉</h2>
-              <p className="text-sm text-emerald-100 mt-0.5">Your placement offer has been confirmed by the Placement Cell.</p>
+              <p className="text-sm text-primary-foreground/80 mt-0.5">Your placement offer has been confirmed by the Placement Cell.</p>
             </div>
           </div>
           <Link
             to="/student/applications"
-            className="px-4 py-2 rounded-xl bg-white text-emerald-800 text-xs font-bold shadow hover:bg-emerald-50 transition-all flex items-center gap-1.5"
+            className="px-4 py-2 rounded-lg bg-card text-primary text-xs font-bold shadow hover:bg-accent transition-all flex items-center gap-1.5"
           >
             <span>View Offer Letter</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       ) : (
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-600/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm shadow-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-200">Placement Drive Season 2026</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Placement Drive Season 2026</span>
             <h2 className="text-2xl font-extrabold tracking-tight mt-1">Hello, {user?.first_name}! Ready for your next career move?</h2>
-            <p className="text-sm text-blue-100 mt-1">Explore live recruitment drives matching your CGPA ({user?.cgpa || '8.5'}) and branch ({user?.branch}).</p>
+            <p className="text-sm text-primary-foreground/80 mt-1">Explore live recruitment drives matching your CGPA ({user?.cgpa || '8.5'}) and branch ({user?.branch}).</p>
           </div>
           <Link
             to="/student/jobs"
-            className="px-5 py-2.5 rounded-xl bg-white text-blue-700 text-xs font-bold shadow hover:bg-blue-50 transition-all flex items-center gap-2 whitespace-nowrap"
+            className="px-5 py-2.5 rounded-lg bg-card text-primary text-xs font-bold shadow hover:bg-accent transition-all flex items-center gap-2 whitespace-nowrap"
           >
             <span>Explore Open Drives</span>
             <ArrowRight className="w-4 h-4" />
@@ -108,42 +108,42 @@ export default function StudentDashboard() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Total Applied</p>
-            <p className="text-3xl font-extrabold text-slate-900 mt-1">{stats.totalApplied}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Total Applied</p>
+            <p className="text-3xl font-extrabold text-foreground mt-1">{stats.totalApplied}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center">
             <FileText className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Shortlisted</p>
-            <p className="text-3xl font-extrabold text-indigo-600 mt-1">{stats.shortlisted}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Shortlisted</p>
+            <p className="text-3xl font-extrabold text-primary mt-1">{stats.shortlisted}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center">
             <CheckCircle2 className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Interviews</p>
-            <p className="text-3xl font-extrabold text-amber-600 mt-1">{stats.interviewScheduled}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Interviews</p>
+            <p className="text-3xl font-extrabold text-chart-3 mt-1">{stats.interviewScheduled}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-chart-3/10 text-chart-3 flex items-center justify-center">
             <Calendar className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Offers Awarded</p>
-            <p className="text-3xl font-extrabold text-emerald-600 mt-1">{stats.selectedOffers}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Offers Awarded</p>
+            <p className="text-3xl font-extrabold text-primary mt-1">{stats.selectedOffers}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
         </div>
@@ -151,32 +151,32 @@ export default function StudentDashboard() {
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Recent Applications */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-          <div className="p-5 border-b border-slate-200 flex items-center justify-between">
+        <div className="lg:col-span-2 bg-card rounded-xl border border-border shadow-sm overflow-hidden">
+          <div className="p-5 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <FileText className="w-5 h-5 text-blue-600" />
-              <h3 className="text-base font-bold text-slate-900">Recent Applications</h3>
+              <FileText className="w-5 h-5 text-primary" />
+              <h3 className="text-base font-bold text-foreground">Recent Applications</h3>
             </div>
-            <Link to="/student/applications" className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+            <Link to="/student/applications" className="text-xs font-bold text-primary hover:text-primary flex items-center gap-1">
               <span>View All</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-border">
             {recentApps.length === 0 ? (
-              <div className="p-8 text-center text-slate-400 text-sm">
+              <div className="p-8 text-center text-muted-foreground text-sm">
                 No active applications yet. Browse the job board to apply!
               </div>
             ) : (
               recentApps.map((app) => (
-                <div key={app.application_id} className="p-4 hover:bg-slate-50/80 transition-all flex items-center justify-between">
+                <div key={app.application_id} className="p-4 hover:bg-background/80 transition-all flex items-center justify-between">
                   <div className="min-w-0 pr-4">
-                    <h4 className="text-sm font-bold text-slate-900 truncate">{app.title}</h4>
-                    <p className="text-xs text-slate-500 flex items-center gap-2 mt-0.5">
+                    <h4 className="text-sm font-bold text-foreground truncate">{app.title}</h4>
+                    <p className="text-xs text-muted-foreground flex items-center gap-2 mt-0.5">
                       <span>{app.company_name}</span>
                       <span>•</span>
-                      <span className="font-semibold text-blue-600">₹ {app.package_lpa} LPA</span>
+                      <span className="font-semibold text-primary">₹ {app.package_lpa} LPA</span>
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -193,31 +193,31 @@ export default function StudentDashboard() {
         {/* Upcoming Interviews & Quick Profile */}
         <div className="space-y-6">
           {/* Upcoming Interviews */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div className="bg-card rounded-xl border border-border shadow-sm p-5">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-amber-500" />
-                <h3 className="text-base font-bold text-slate-900">Upcoming Interviews</h3>
+                <Calendar className="w-5 h-5 text-chart-3" />
+                <h3 className="text-base font-bold text-foreground">Upcoming Interviews</h3>
               </div>
-              <Link to="/student/interviews" className="text-xs font-bold text-blue-600 hover:text-blue-700">
+              <Link to="/student/interviews" className="text-xs font-bold text-primary hover:text-primary">
                 View All
               </Link>
             </div>
 
             {interviews.length === 0 ? (
-              <p className="text-xs text-slate-400 text-center py-6">No scheduled interviews at this time.</p>
+              <p className="text-xs text-muted-foreground text-center py-6">No scheduled interviews at this time.</p>
             ) : (
               <div className="space-y-3">
                 {interviews.map((item) => (
-                  <div key={item.interview_id} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                  <div key={item.interview_id} className="p-3.5 rounded-lg bg-background border border-border space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-900">{item.company_name}</span>
-                      <span className="text-[11px] px-2 py-0.5 rounded-md bg-blue-100 text-blue-700 font-medium">
+                      <span className="text-xs font-bold text-foreground">{item.company_name}</span>
+                      <span className="text-[11px] px-2 py-0.5 rounded-md bg-accent text-primary font-medium">
                         {item.round_name}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-600 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-slate-400" />
+                    <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-muted-foreground" />
                       {new Date(item.scheduled_time).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}
                     </p>
                     {item.meeting_link && (
@@ -225,7 +225,7 @@ export default function StudentDashboard() {
                         href={item.meeting_link}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline pt-1"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline pt-1"
                       >
                         <span>Join Virtual Room</span>
                         <ExternalLink className="w-3 h-3" />
@@ -238,27 +238,27 @@ export default function StudentDashboard() {
           </div>
 
           {/* Academic Snapshot Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div className="bg-card rounded-xl border border-border shadow-sm p-5">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-bold text-slate-900">Academic Profile</h3>
-              <Link to="/student/profile" className="text-xs font-bold text-blue-600 hover:text-blue-700">Edit</Link>
+              <h3 className="text-sm font-bold text-foreground">Academic Profile</h3>
+              <Link to="/student/profile" className="text-xs font-bold text-primary hover:text-primary">Edit</Link>
             </div>
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">CGPA</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.cgpa || '8.50'}</span>
+              <div className="p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">CGPA</span>
+                <span className="text-base font-extrabold text-foreground">{user?.cgpa || '8.50'}</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">Branch</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.branch || 'CSE'}</span>
+              <div className="p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">Branch</span>
+                <span className="text-base font-extrabold text-foreground">{user?.branch || 'CSE'}</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">Active Backlogs</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.active_backlogs ?? 0}</span>
+              <div className="p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">Active Backlogs</span>
+                <span className="text-base font-extrabold text-foreground">{user?.active_backlogs ?? 0}</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">Graduation</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.graduation_year || 2026}</span>
+              <div className="p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">Graduation</span>
+                <span className="text-base font-extrabold text-foreground">{user?.graduation_year || 2026}</span>
               </div>
             </div>
           </div>
