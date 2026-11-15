@@ -8,7 +8,7 @@
 [![Database](https://img.shields.io/badge/database-MySQL-4479A1)](./database/schema.sql)
 [![License](https://img.shields.io/badge/license-ISC-blue)](./backend/package.json)
 
-![SPARK landing page](<screenshots/Screenshot 2026-11-15 172912.png>)
+![SPARK landing page](./screenshots/Screenshot%202026-11-15%20172912.png)
 
 > Screenshot captured from the repository. See [Screenshots](#screenshots) for the additional application view.
 
@@ -484,11 +484,11 @@ All API paths are mounted under `/api`. The complete definitions are in
 
 ## Screenshots
 
-![SPARK landing page](<screenshots/Screenshot 2026-11-15 172912.png>)
+![SPARK landing page](./screenshots/Screenshot%202026-11-15%20172912.png)
 
 *Landing page with the SPARK wordmark, hero copy, actions, and placement statistics.*
 
-![Student drive browser](<screenshots/Screenshot 2026-11-15 172224.png>)
+![Student drive browser](./screenshots/Screenshot%202026-11-15%20172224.png)
 
 *Student drive browser showing search, eligibility information, and drive cards.*
 
