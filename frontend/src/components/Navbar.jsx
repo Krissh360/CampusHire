@@ -1,11 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LogOut, User, Bell, Sparkles } from 'lucide-react';
+import { LogOut, Moon, Sun } from 'lucide-react';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isDark, setIsDark] = React.useState(() => document.documentElement.classList.contains('dark'));
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('campushire-theme', next ? 'dark' : 'light');
+    setIsDark(next);
+  };
 
   const handleLogout = () => {
     logout();
@@ -19,13 +27,13 @@ export default function Navbar() {
     : 'User';
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-20">
+    <header className="h-16 bg-card border-b border-border px-6 flex items-center justify-between sticky top-0 z-20">
       <div className="flex items-center gap-2">
-        <h2 className="text-base font-semibold text-slate-800">
-          Welcome, <span className="text-blue-600 font-bold">{displayName}</span>
+        <h2 className="text-base font-semibold text-foreground">
+          Welcome, <span className="text-primary font-bold">{displayName}</span>
         </h2>
         {user?.roll_number && (
-          <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-mono font-medium">
+          <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-mono font-medium">
             {user.roll_number}
           </span>
         )}
@@ -33,14 +41,17 @@ export default function Navbar() {
 
       <div className="flex items-center gap-4">
         <div className="text-right hidden sm:block">
-          <p className="text-xs font-semibold text-slate-700">{user?.email}</p>
-          <p className="text-[11px] text-slate-400 capitalize">Role: {user?.role}</p>
+          <p className="text-xs font-semibold text-foreground">{user?.email}</p>
+          <p className="text-[11px] text-muted-foreground capitalize">Role: {user?.role}</p>
         </div>
 
+        <button onClick={toggleTheme} title={isDark ? 'Use light theme' : 'Use dark theme'} className="p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+          {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+        </button>
         <button
           onClick={handleLogout}
           title="Sign out of CampusHire"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:text-red-600 hover:border-red-200 hover:bg-red-50 text-xs font-medium transition-all"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-destructive hover:border-destructive/30 hover:bg-destructive/10 text-xs font-medium transition-all"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Logout</span>
