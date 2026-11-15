@@ -355,7 +355,7 @@ export default function CompanyJobsPage() {
       {/* Schedule Interview Modal */}
       {interviewModal.open && interviewModal.app && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-card/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-card rounded-3xl max-w-lg w-full shadow-2xl border border-border p-6 sm:p-7 space-y-5">
+          <div className="bg-card rounded-xl max-w-lg w-full shadow-2xl border border-border p-6 sm:p-7 space-y-5">
             <div className="flex items-start justify-between border-b border-border pb-3">
               <div>
                 <h3 className="text-base font-bold text-foreground">Schedule Interview Session</h3>

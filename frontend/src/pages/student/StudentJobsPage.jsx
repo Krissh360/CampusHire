@@ -249,7 +249,7 @@ export default function StudentJobsPage() {
       {/* Job Details & Application Modal */}
       {selectedJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-card/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-card rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-border p-6 sm:p-8 space-y-6">
+          <div className="bg-card rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-border p-6 sm:p-8 space-y-6">
             {/* Modal Header */}
             <div className="flex items-start justify-between border-b border-border pb-4">
               <div>
