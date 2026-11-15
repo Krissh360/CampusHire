@@ -531,7 +531,6 @@ No contribution guide is present. For changes, keep frontend and backend
 responsibilities separate, preserve API contracts, and update the relevant SQL
 or route documentation when behavior changes.
 
-**License:** TODO. No `LICENSE` file is present. The backend package metadata
-declares `ISC`, but the repository does not include the license text.
+**License:** [ISC](./LICENSE).
 
-**Authors:** TODO — add the project team names and roll numbers.
+**Author:** Krissh360
