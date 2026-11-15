@@ -84,7 +84,7 @@ export default function AdminReportsPage() {
         <button
           onClick={exportCSV}
           disabled={report.length === 0}
-          className="px-5 py-2.5 rounded-lg bg-primary hover:bg-primary text-primary-foreground text-xs font-bold shadow-sm shadow-none transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+          className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
         >
           <Download className="w-4 h-4" />
           <span>Export Official Report (CSV)</span>

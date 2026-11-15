@@ -173,7 +173,7 @@ export default function CompanyProfilePage() {
             <button
               type="submit"
               disabled={saving}
-              className="py-2.5 px-6 rounded-lg bg-primary hover:bg-primary text-primary-foreground text-xs font-bold shadow transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
+              className="py-2.5 px-6 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold shadow transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
             >
               <Save className="w-4 h-4" />
               <span>{saving ? 'Saving...' : 'Save Profile Changes'}</span>

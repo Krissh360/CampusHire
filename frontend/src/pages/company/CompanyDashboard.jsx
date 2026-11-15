@@ -61,7 +61,7 @@ export default function CompanyDashboard() {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm shadow-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Recruiter Management Console</span>
           <h2 className="text-2xl font-extrabold tracking-tight mt-1">{user?.company_name || 'Recruiting Partner'}</h2>
@@ -71,7 +71,7 @@ export default function CompanyDashboard() {
         </div>
         <Link
           to="/company/post-job"
-          className="px-5 py-2.5 rounded-lg bg-primary hover:bg-primary text-primary-foreground text-xs font-bold shadow-sm shadow-none transition-all flex items-center gap-2 whitespace-nowrap"
+          className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold shadow-sm transition-all flex items-center gap-2 whitespace-nowrap"
         >
           <PlusCircle className="w-4 h-4" />
           <span>Publish New Drive</span>

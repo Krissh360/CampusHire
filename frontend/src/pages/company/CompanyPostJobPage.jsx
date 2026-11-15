@@ -351,7 +351,7 @@ export default function CompanyPostJobPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="py-3 px-8 rounded-lg bg-primary hover:bg-primary text-primary-foreground text-sm font-bold shadow-sm shadow-none transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
+            className="py-3 px-8 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
           >
             <Save className="w-4 h-4" />
             <span>{submitting ? 'Publishing Drive...' : 'Publish Campus Recruitment Drive'}</span>

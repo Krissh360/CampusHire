@@ -20,7 +20,7 @@ export default function LandingPage() {
       <header className="bg-card/80 backdrop-blur-md border-b border-border sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg    flex items-center justify-center text-primary-foreground shadow-sm shadow-none">
+            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
               <GraduationCap className="w-5 h-5" />
             </div>
             <span className="text-xl font-extrabold text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>
@@ -35,7 +35,7 @@ export default function LandingPage() {
             </Link>
             <Link
               to="/register"
-              className="px-4 py-2 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary shadow-sm shadow-none transition-all flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary/90 shadow-sm transition-all flex items-center gap-1.5"
             >
               <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />
@@ -63,7 +63,7 @@ export default function LandingPage() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/login"
-              className="px-6 py-3.5 rounded-lg text-base font-semibold text-primary-foreground bg-primary hover:bg-primary shadow-sm shadow-none transition-all flex items-center gap-2"
+              className="px-6 py-3.5 rounded-lg text-base font-semibold text-primary-foreground bg-primary hover:bg-primary/90 shadow-sm transition-all flex items-center gap-2"
             >
               <span>Launch Demo Portal</span>
               <ArrowRight className="w-4 h-4" />

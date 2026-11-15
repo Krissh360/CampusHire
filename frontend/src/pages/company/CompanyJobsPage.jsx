@@ -135,7 +135,7 @@ export default function CompanyJobsPage() {
         </div>
         <Link
           to="/company/post-job"
-          className="px-4 py-2.5 rounded-lg bg-primary hover:bg-primary text-primary-foreground text-xs font-bold shadow-sm shadow-none transition-all flex items-center gap-1.5"
+          className="px-4 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold shadow-sm transition-all flex items-center gap-1.5"
         >
           <PlusCircle className="w-4 h-4" />
           <span>Publish New Drive</span>
@@ -429,7 +429,7 @@ export default function CompanyJobsPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary shadow-sm shadow-none"
+                  className="px-5 py-2 rounded-full bg-primary text-primary-foreground font-bold hover:bg-primary/90 shadow-sm"
                 >
                   Confirm & Schedule Slot
                 </button>

@@ -76,7 +76,7 @@ export default function CompanyInterviewsPage() {
                     href={item.meeting_link}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:bg-primary transition-all flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold hover:bg-primary/90 transition-all flex items-center gap-1.5"
                   >
                     <Video className="w-3.5 h-3.5" />
                     <span>Launch Interview Session</span>

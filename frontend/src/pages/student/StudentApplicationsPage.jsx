@@ -163,7 +163,7 @@ export default function StudentApplicationsPage() {
                     <a
                       href="#download-offer"
                       onClick={(e) => { e.preventDefault(); alert(`Downloading Provisional Offer Letter for ${app.title} - ${app.company_name}`); }}
-                      className="px-3.5 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold shadow-sm hover:bg-primary transition-all flex items-center gap-1.5"
+                      className="px-3.5 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-bold shadow-sm hover:bg-primary/90 transition-all flex items-center gap-1.5"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>Download Offer</span>

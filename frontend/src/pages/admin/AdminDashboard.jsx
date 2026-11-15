@@ -69,7 +69,7 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8">
       {/* Banner */}
-      <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm shadow-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Institutional Placement Cell</span>
           <h2 className="text-2xl font-extrabold tracking-tight mt-1">Campus Placement Intelligence Center</h2>

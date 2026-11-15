@@ -71,9 +71,9 @@ export default function StudentDashboard() {
     <div className="space-y-8">
       {/* Placement Status Banner */}
       {user?.is_placed ? (
-        <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm shadow-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-lg bg-primary-foreground/10 backdrop-blur-md flex items-center justify-center text-primary-foreground">
+            <div className="w-12 h-12 rounded-full bg-primary-foreground/10 backdrop-blur-md flex items-center justify-center text-primary-foreground">
               <Award className="w-7 h-7" />
             </div>
             <div>
@@ -90,7 +90,7 @@ export default function StudentDashboard() {
           </Link>
         </div>
       ) : (
-        <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm shadow-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Placement Drive Season 2026</span>
             <h2 className="text-2xl font-extrabold tracking-tight mt-1">Hello, {user?.first_name}! Ready for your next career move?</h2>

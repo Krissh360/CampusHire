@@ -82,7 +82,7 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-xl text-center">
         <Link to="/" className="inline-flex items-center gap-2 mb-4">
-          <div className="w-10 h-10 rounded-lg    flex items-center justify-center text-primary-foreground shadow-sm shadow-none">
+          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
             <GraduationCap className="w-6 h-6" />
           </div>
           <span className="text-2xl font-black text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>
@@ -116,7 +116,7 @@ export default function RegisterPage() {
       </div>
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-xl">
-        <div className="bg-card py-8 px-6 sm:px-10 shadow-sm shadow-none rounded-xl border border-border">
+        <div className="bg-card py-8 px-6 sm:px-10 shadow-sm rounded-xl border border-border">
           {error && (
             <div className="mb-6 p-4 rounded-lg bg-destructive/10 border border-destructive/30 flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
@@ -271,7 +271,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full mt-2 py-3 px-4 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary shadow-sm shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                className="w-full mt-2 py-3 px-4 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary/90 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
                 {submitting ? 'Creating Profile...' : 'Complete Student Registration'}
               </button>
@@ -367,7 +367,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full mt-2 py-3 px-4 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary shadow-sm shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                className="w-full mt-2 py-3 px-4 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary/90 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
                 {submitting ? 'Submitting Application...' : 'Register Recruitment Partner'}
               </button>

@@ -230,7 +230,7 @@ export default function StudentJobsPage() {
                     setMessage({ text: '', type: '' });
                     setApplyNotes('');
                   }}
-                  className="w-full py-2.5 px-4 rounded-lg text-xs font-bold text-foreground bg-background hover:bg-primary hover:text-primary-foreground border border-border hover:border-transparent transition-all flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 px-4 rounded-lg text-xs font-bold text-foreground bg-background hover:bg-primary/90 hover:text-primary-foreground border border-border hover:border-transparent transition-all flex items-center justify-center gap-1.5"
                 >
                   <span>View Details & Criteria</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -352,7 +352,7 @@ export default function StudentJobsPage() {
                   type="button"
                   disabled={applying}
                   onClick={handleApply}
-                  className="w-full py-3 px-4 rounded-lg text-sm font-bold text-primary-foreground bg-primary hover:bg-primary shadow-sm shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                  className="w-full py-3 px-4 rounded-lg text-sm font-bold text-primary-foreground bg-primary hover:bg-primary/90 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                 >
                   {applying ? (
                     'Submitting Application to Recruitment Portal...'

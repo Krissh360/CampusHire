@@ -298,7 +298,7 @@ export default function StudentProfilePage() {
             <button
               type="submit"
               disabled={saving}
-              className="py-2.5 px-6 rounded-lg bg-primary text-primary-foreground text-xs font-bold shadow hover:bg-primary transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
+              className="py-2.5 px-6 rounded-full bg-primary text-primary-foreground text-xs font-bold shadow hover:bg-primary/90 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
             >
               <Save className="w-4 h-4" />
               <span>{saving ? 'Saving...' : 'Update Academic Profile'}</span>
