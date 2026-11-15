@@ -81,7 +81,7 @@ export default function RegisterPage() {
 
   return (
     <div className="relative overflow-hidden min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <BackgroundPaths opacity={0.35} />
+      <BackgroundPaths opacity={0.35} count={16} />
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-xl text-center">
         <Link to="/" className="inline-flex items-center gap-2 mb-4">
           <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">

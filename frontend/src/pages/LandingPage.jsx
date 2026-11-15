@@ -47,7 +47,7 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
-        <BackgroundPaths opacity={0.35} />
+        <BackgroundPaths opacity={0.35} count={16} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent border border-border text-primary text-xs font-semibold uppercase tracking-wider mb-6">
             <Sparkles className="w-3.5 h-3.5" />
