@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import BackgroundPaths from '../../components/BackgroundPaths';
 import {
   Building2,
   Briefcase,
@@ -62,6 +63,7 @@ export default function CompanyDashboard() {
     <div className="space-y-8">
       {/* Header Banner */}
       <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <BackgroundPaths opacity={0.15} colorClass="text-primary-foreground" count={24} />
         <div className="absolute -right-12 -top-20 h-48 w-48 rounded-full bg-primary-foreground/10" />
         <div className="absolute right-40 -bottom-28 h-56 w-56 rounded-full bg-primary-foreground/10" />
         <div className="relative z-10">

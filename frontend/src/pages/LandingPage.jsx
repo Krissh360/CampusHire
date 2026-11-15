@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BackgroundPaths from '../components/BackgroundPaths';
 import {
   GraduationCap,
   Building2,
@@ -46,7 +47,8 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <BackgroundPaths opacity={0.35} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent border border-border text-primary text-xs font-semibold uppercase tracking-wider mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             Next-Gen Campus Placement & DBMS Management System
