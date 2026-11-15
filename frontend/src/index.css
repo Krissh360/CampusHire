@@ -67,6 +67,40 @@
     border-color: hsl(var(--border));
   }
 
+  @layer components {
+    .page-background {
+      background-color: color-mix(in srgb, hsl(var(--background)) 98%, hsl(var(--primary)) 2%);
+    }
+
+    .interactive-card {
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px hsl(var(--foreground) / 0.08);
+    }
+
+    .pressable {
+      transition: transform 150ms ease, background-color 150ms ease, color 150ms ease;
+    }
+
+    .pressable:active {
+      transform: scale(0.98);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));

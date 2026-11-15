@@ -91,7 +91,7 @@ export default function Sidebar() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${
+                `flex items-center gap-3 px-3.5 py-2.5 rounded-full text-sm font-medium transition-all duration-150 pressable ${
                   isActive
                     ? 'bg-primary text-primary-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground hover:bg-accent'
@@ -106,8 +106,14 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer Info */}
-      <div className="p-4 border-t border-border text-xs text-muted-foreground text-center">
-        DBMS Academic Project © 2026
+      <div className="p-4 border-t border-border">
+        <div className="rounded-lg bg-accent p-3 text-xs text-accent-foreground">
+          <p className="font-semibold">Keep your profile ready</p>
+          <p className="mt-1 text-accent-foreground/75">Complete your academic details before applying.</p>
+        </div>
+        <p className="mt-3 text-xs text-muted-foreground text-center">
+          DBMS Academic Project © 2026
+        </p>
       </div>
     </aside>
   );
