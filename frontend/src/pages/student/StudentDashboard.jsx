@@ -101,7 +101,7 @@ export default function StudentDashboard() {
     <div className="space-y-8">
       {/* Placement Status Banner */}
       {user?.is_placed ? (
-        <div className="relative overflow-hidden p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="absolute -right-10 -top-16 h-40 w-40 rounded-full bg-primary-foreground/10" />
           <div className="absolute right-24 -bottom-24 h-52 w-52 rounded-full bg-primary-foreground/10" />
           <div className="relative z-10 flex items-center gap-4">
@@ -122,7 +122,7 @@ export default function StudentDashboard() {
           </Link>
         </div>
       ) : (
-        <div className="relative overflow-hidden p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="absolute -right-12 -top-20 h-48 w-48 rounded-full bg-primary-foreground/10" />
           <div className="absolute right-40 -bottom-28 h-56 w-56 rounded-full bg-primary-foreground/10" />
           <div className="relative z-10">

@@ -66,7 +66,7 @@ export default function Sidebar() {
       {/* Brand Header */}
       <div className="p-6 border-b border-border">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
+          <div className="w-10 h-10 rounded-full token-primary-surface flex items-center justify-center shadow-sm">
             <GraduationCap className="w-6 h-6" />
           </div>
           <div>
@@ -93,7 +93,7 @@ export default function Sidebar() {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3.5 py-2.5 rounded-full text-sm font-medium transition-all duration-150 pressable ${
                   isActive
-                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    ? 'token-primary-nav shadow-sm'
                     : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                 }`
               }

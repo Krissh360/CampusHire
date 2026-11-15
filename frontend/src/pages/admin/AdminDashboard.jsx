@@ -69,8 +69,10 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8">
       {/* Banner */}
-      <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
+      <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="absolute -right-12 -top-20 h-48 w-48 rounded-full bg-primary-foreground/10" />
+        <div className="absolute right-40 -bottom-28 h-56 w-56 rounded-full bg-primary-foreground/10" />
+        <div className="relative z-10">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Institutional Placement Cell</span>
           <h2 className="text-2xl font-extrabold tracking-tight mt-1">Campus Placement Intelligence Center</h2>
           <p className="text-sm text-primary-foreground/80 mt-1">
@@ -79,7 +81,7 @@ export default function AdminDashboard() {
         </div>
         <Link
           to="/admin/reports"
-          className="px-5 py-2.5 rounded-lg bg-card text-primary-foreground text-xs font-bold shadow hover:bg-accent transition-all flex items-center gap-2 whitespace-nowrap"
+          className="relative z-10 px-5 py-2.5 rounded-full bg-card text-primary hover:bg-accent text-xs font-bold shadow transition-all flex items-center gap-2 whitespace-nowrap pressable"
         >
           <FileSpreadsheet className="w-4 h-4" />
           <span>Generate Placement Report</span>

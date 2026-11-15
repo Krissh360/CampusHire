@@ -61,17 +61,19 @@ export default function CompanyDashboard() {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="p-6 rounded-xl bg-primary text-primary-foreground shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
+      <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="absolute -right-12 -top-20 h-48 w-48 rounded-full bg-primary-foreground/10" />
+        <div className="absolute right-40 -bottom-28 h-56 w-56 rounded-full bg-primary-foreground/10" />
+        <div className="relative z-10">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Recruiter Management Console</span>
           <h2 className="text-2xl font-extrabold tracking-tight mt-1">{user?.company_name || 'Recruiting Partner'}</h2>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-primary-foreground/80 mt-1">
             Manage your on-campus talent acquisition pipelines, conduct interviews, and release offers.
           </p>
         </div>
         <Link
           to="/company/post-job"
-          className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold shadow-sm transition-all flex items-center gap-2 whitespace-nowrap"
+          className="relative z-10 px-5 py-2.5 rounded-full bg-card hover:bg-accent text-primary text-xs font-bold shadow-sm transition-all flex items-center gap-2 whitespace-nowrap pressable"
         >
           <PlusCircle className="w-4 h-4" />
           <span>Publish New Drive</span>

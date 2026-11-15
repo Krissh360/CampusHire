@@ -72,6 +72,16 @@
       background-color: color-mix(in srgb, hsl(var(--background)) 98%, hsl(var(--primary)) 2%);
     }
 
+    .token-primary-surface {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+
+    .token-primary-nav {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+
     .interactive-card {
       transition: transform 150ms ease, box-shadow 150ms ease;
     }
