@@ -50,32 +50,32 @@ export default function Sidebar() {
   if (user?.role === 'student') {
     links = studentLinks;
     roleTitle = 'Student Portal';
-    badgeColor = 'bg-emerald-500/10 text-emerald-600 border-emerald-200';
+    badgeColor = 'bg-accent text-primary border-border';
   } else if (user?.role === 'company') {
     links = companyLinks;
     roleTitle = 'Corporate Recruiter';
-    badgeColor = 'bg-blue-500/10 text-blue-600 border-blue-200';
+    badgeColor = 'bg-accent text-primary border-border';
   } else if (user?.role === 'admin') {
     links = adminLinks;
     roleTitle = 'Placement Cell (Admin)';
-    badgeColor = 'bg-purple-500/10 text-purple-600 border-purple-200';
+    badgeColor = 'bg-accent text-primary border-border';
   }
 
   return (
-    <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col flex-shrink-0 min-h-screen">
+    <aside className="w-64 bg-card text-muted-foreground flex flex-col flex-shrink-0 min-h-screen">
       {/* Brand Header */}
-      <div className="p-6 border-b border-slate-800">
+      <div className="p-6 border-b border-border">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
+          <div className="w-10 h-10 rounded-full token-primary-surface flex items-center justify-center shadow-sm">
             <GraduationCap className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-white tracking-tight">CampusHire</h1>
-            <p className="text-xs text-slate-400">Recruitment Portal</p>
+            <h1 className="text-lg font-bold text-foreground tracking-tight">CampusHire</h1>
+            <p className="text-xs text-muted-foreground">Recruitment Portal</p>
           </div>
         </div>
 
-        <div className="mt-4 pt-3 border-t border-slate-800/60">
+        <div className="mt-4 pt-3 border-t border-border/60">
           <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold border ${badgeColor}`}>
             {roleTitle}
           </span>
@@ -91,10 +91,10 @@ export default function Sidebar() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${
+                `flex items-center gap-3 px-3.5 py-2.5 rounded-full text-sm font-medium transition-all duration-150 pressable ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'token-primary-nav shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                 }`
               }
             >
@@ -106,8 +106,14 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer Info */}
-      <div className="p-4 border-t border-slate-800 text-xs text-slate-500 text-center">
-        DBMS Academic Project © 2026
+      <div className="p-4 border-t border-border">
+        <div className="card-shape rounded-lg bg-accent p-3 text-xs text-accent-foreground">
+          <p className="font-semibold">Keep your profile ready</p>
+          <p className="mt-1 text-accent-foreground/75">Complete your academic details before applying.</p>
+        </div>
+        <p className="mt-3 text-xs text-muted-foreground text-center">
+          DBMS Academic Project © 2026
+        </p>
       </div>
     </aside>
   );

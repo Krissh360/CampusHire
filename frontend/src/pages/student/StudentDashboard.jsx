@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import BackgroundPaths from '../../components/BackgroundPaths';
 import {
   Briefcase,
   FileText,
@@ -47,7 +48,7 @@ export default function StudentDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-24">
-        <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -55,50 +56,86 @@ export default function StudentDashboard() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Selected':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+        return 'bg-chart-1/10 text-chart-1 border-chart-1/30';
       case 'Interview Scheduled':
-        return 'bg-blue-50 text-blue-700 border-blue-200';
+        return 'bg-chart-3/10 text-chart-3 border-chart-3/30';
       case 'Shortlisted':
-        return 'bg-indigo-50 text-indigo-700 border-indigo-200';
+        return 'bg-chart-4/10 text-chart-4 border-chart-4/30';
       case 'Rejected':
-        return 'bg-red-50 text-red-700 border-red-200';
+        return 'bg-destructive/10 text-destructive border-destructive/30';
       default:
-        return 'bg-amber-50 text-amber-700 border-amber-200';
+        return 'bg-chart-2/10 text-chart-2 border-chart-2/30';
     }
   };
+
+  const getStatusDot = (status) => {
+    switch (status) {
+      case 'Selected':
+        return 'bg-chart-1';
+      case 'Interview Scheduled':
+        return 'bg-chart-3';
+      case 'Shortlisted':
+        return 'bg-chart-4';
+      case 'Rejected':
+        return 'bg-destructive';
+      default:
+        return 'bg-chart-2';
+    }
+  };
+
+  const getProgressStep = (status) => {
+    if (status === 'Selected') return 4;
+    if (status === 'Interview Scheduled') return 3;
+    if (status === 'Shortlisted') return 2;
+    return 1;
+  };
+
+  const formatAppliedDate = (application) => {
+    const date = application.applied_at || application.created_at;
+    return date ? new Date(date).toLocaleDateString([], { dateStyle: 'medium' }) : 'Date pending';
+  };
+
+  const cgpa = Number(user?.cgpa || 8.5);
+  const activeBacklogs = user?.active_backlogs ?? 0;
 
   return (
     <div className="space-y-8">
       {/* Placement Status Banner */}
       {user?.is_placed ? (
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-lg shadow-emerald-600/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+        <div className="relative overflow-hidden p-6 rounded-xl dashboard-card token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <BackgroundPaths opacity={0.15} colorClass="text-primary-foreground" count={12} />
+          <div className="absolute -right-10 -top-16 h-40 w-40 rounded-full bg-primary-foreground/10" />
+          <div className="absolute right-24 -bottom-24 h-52 w-52 rounded-full bg-primary-foreground/10" />
+          <div className="relative z-10 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-primary-foreground/10 backdrop-blur-md flex items-center justify-center text-primary-foreground">
               <Award className="w-7 h-7" />
             </div>
             <div>
               <h2 className="text-xl font-bold tracking-tight">Congratulations! You are officially Placed 🎉</h2>
-              <p className="text-sm text-emerald-100 mt-0.5">Your placement offer has been confirmed by the Placement Cell.</p>
+              <p className="text-sm text-primary-foreground/80 mt-0.5">Your placement offer has been confirmed by the Placement Cell.</p>
             </div>
           </div>
           <Link
             to="/student/applications"
-            className="px-4 py-2 rounded-xl bg-white text-emerald-800 text-xs font-bold shadow hover:bg-emerald-50 transition-all flex items-center gap-1.5"
+            className="relative z-10 px-4 py-2 rounded-full bg-card text-primary text-xs font-bold shadow hover:bg-accent transition-all flex items-center gap-1.5 pressable"
           >
             <span>View Offer Letter</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       ) : (
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-600/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-200">Placement Drive Season 2026</span>
+        <div className="relative overflow-hidden p-6 rounded-xl dashboard-card token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <BackgroundPaths opacity={0.15} colorClass="text-primary-foreground" count={12} />
+          <div className="absolute -right-12 -top-20 h-48 w-48 rounded-full bg-primary-foreground/10" />
+          <div className="absolute right-40 -bottom-28 h-56 w-56 rounded-full bg-primary-foreground/10" />
+          <div className="relative z-10">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Placement Drive Season 2026</span>
             <h2 className="text-2xl font-extrabold tracking-tight mt-1">Hello, {user?.first_name}! Ready for your next career move?</h2>
-            <p className="text-sm text-blue-100 mt-1">Explore live recruitment drives matching your CGPA ({user?.cgpa || '8.5'}) and branch ({user?.branch}).</p>
+            <p className="text-sm text-primary-foreground/80 mt-1">Explore live recruitment drives matching your CGPA ({user?.cgpa || '8.5'}) and branch ({user?.branch}).</p>
           </div>
           <Link
             to="/student/jobs"
-            className="px-5 py-2.5 rounded-xl bg-white text-blue-700 text-xs font-bold shadow hover:bg-blue-50 transition-all flex items-center gap-2 whitespace-nowrap"
+            className="relative z-10 px-5 py-2.5 rounded-full bg-card text-primary text-xs font-bold shadow hover:bg-accent transition-all flex items-center gap-2 whitespace-nowrap pressable"
           >
             <span>Explore Open Drives</span>
             <ArrowRight className="w-4 h-4" />
@@ -108,42 +145,46 @@ export default function StudentDashboard() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Total Applied</p>
-            <p className="text-3xl font-extrabold text-slate-900 mt-1">{stats.totalApplied}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Total Applied</p>
+            <p className="text-3xl font-extrabold text-foreground mt-1 tracking-tight">{stats.totalApplied}</p>
+            <p className="text-[11px] text-muted-foreground mt-1">Across all drives</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <FileText className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Shortlisted</p>
-            <p className="text-3xl font-extrabold text-indigo-600 mt-1">{stats.shortlisted}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Shortlisted</p>
+            <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.shortlisted}</p>
+            <p className="text-[11px] text-muted-foreground mt-1">Drives in review</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <CheckCircle2 className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Interviews</p>
-            <p className="text-3xl font-extrabold text-amber-600 mt-1">{stats.interviewScheduled}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Interviews</p>
+            <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.interviewScheduled}</p>
+            <p className="text-[11px] text-muted-foreground mt-1">Scheduled next</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <Calendar className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="interactive-card dashboard-card bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Offers Awarded</p>
-            <p className="text-3xl font-extrabold text-emerald-600 mt-1">{stats.selectedOffers}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Offers Awarded</p>
+            <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.selectedOffers}</p>
+            <p className="text-[11px] text-muted-foreground mt-1">Offers accepted</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
         </div>
@@ -151,36 +192,57 @@ export default function StudentDashboard() {
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Recent Applications */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-          <div className="p-5 border-b border-slate-200 flex items-center justify-between">
+        <div className="lg:col-span-2 dashboard-card bg-card rounded-xl border border-border shadow-sm overflow-hidden">
+          <div className="p-4 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <FileText className="w-5 h-5 text-blue-600" />
-              <h3 className="text-base font-bold text-slate-900">Recent Applications</h3>
+              <FileText className="w-5 h-5 text-primary" />
+              <h3 className="text-base font-bold text-foreground">Recent Applications</h3>
             </div>
-            <Link to="/student/applications" className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+            <Link to="/student/applications" className="text-xs font-bold text-primary hover:text-primary flex items-center gap-1">
               <span>View All</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-border">
             {recentApps.length === 0 ? (
-              <div className="p-8 text-center text-slate-400 text-sm">
-                No active applications yet. Browse the job board to apply!
+              <div className="p-6 text-center">
+                <div className="mx-auto w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
+                  <Briefcase className="w-5 h-5" />
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground">No active applications yet.</p>
+                <Link to="/student/jobs" className="mt-3 inline-flex px-3 py-1.5 rounded-full border border-border text-xs font-semibold text-foreground hover:bg-accent pressable">
+                  Browse drives
+                </Link>
               </div>
             ) : (
               recentApps.map((app) => (
-                <div key={app.application_id} className="p-4 hover:bg-slate-50/80 transition-all flex items-center justify-between">
-                  <div className="min-w-0 pr-4">
-                    <h4 className="text-sm font-bold text-slate-900 truncate">{app.title}</h4>
-                    <p className="text-xs text-slate-500 flex items-center gap-2 mt-0.5">
-                      <span>{app.company_name}</span>
-                      <span>•</span>
-                      <span className="font-semibold text-blue-600">₹ {app.package_lpa} LPA</span>
-                    </p>
+                <div key={app.application_id} className="p-4 hover:bg-accent/50 transition-all flex items-center justify-between gap-4">
+                  <div className="flex items-start gap-3 min-w-0">
+                    <div className="w-9 h-9 shrink-0 rounded-lg bg-accent text-accent-foreground flex items-center justify-center font-bold">
+                      {(app.company_name || '?').charAt(0).toUpperCase()}
+                    </div>
+                    <div className="min-w-0 pr-2">
+                      <h4 className="text-sm font-bold text-foreground truncate">{app.title}</h4>
+                      <p className="text-xs text-muted-foreground flex items-center gap-2 mt-0.5 truncate">
+                        <span className="truncate">{app.company_name}</span>
+                        <span>•</span>
+                        <span className="font-semibold text-primary whitespace-nowrap">₹ {app.package_lpa} LPA</span>
+                      </p>
+                      <p className="text-[11px] text-muted-foreground mt-1">Applied {formatAppliedDate(app)}</p>
+                      <div className="flex items-center gap-1 mt-2" aria-label={`Application progress: ${app.status}`}>
+                        {['Applied', 'Shortlisted', 'Interview', 'Offer'].map((step, index) => (
+                          <React.Fragment key={step}>
+                            <span className={`h-1.5 w-6 rounded-full ${index < getProgressStep(app.status) ? 'bg-primary' : 'bg-muted'}`} />
+                            {index < 3 && <span className="text-[9px] text-muted-foreground">{step === 'Interview' ? 'I' : ''}</span>}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${getStatusBadge(app.status)}`}>
+                  <div className="flex shrink-0 items-center">
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${getStatusBadge(app.status)}`}>
+                      <span className={`h-1.5 w-1.5 rounded-full ${getStatusDot(app.status)}`} />
                       {app.status}
                     </span>
                   </div>
@@ -191,33 +253,41 @@ export default function StudentDashboard() {
         </div>
 
         {/* Upcoming Interviews & Quick Profile */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* Upcoming Interviews */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div className="dashboard-card bg-card rounded-xl border border-border shadow-sm p-4">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-amber-500" />
-                <h3 className="text-base font-bold text-slate-900">Upcoming Interviews</h3>
+                <Calendar className="w-5 h-5 text-chart-3" />
+                <h3 className="text-base font-bold text-foreground">Upcoming Interviews</h3>
               </div>
-              <Link to="/student/interviews" className="text-xs font-bold text-blue-600 hover:text-blue-700">
+              <Link to="/student/interviews" className="text-xs font-bold text-primary hover:text-primary">
                 View All
               </Link>
             </div>
 
             {interviews.length === 0 ? (
-              <p className="text-xs text-slate-400 text-center py-6">No scheduled interviews at this time.</p>
+              <div className="text-center py-4">
+                <div className="mx-auto w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
+                  <Calendar className="w-5 h-5" />
+                </div>
+                <p className="mt-3 text-xs text-muted-foreground">No scheduled interviews yet.</p>
+                <Link to="/student/jobs" className="mt-3 inline-flex px-3 py-1.5 rounded-full border border-border text-xs font-semibold text-foreground hover:bg-accent pressable">
+                  Explore drives
+                </Link>
+              </div>
             ) : (
               <div className="space-y-3">
                 {interviews.map((item) => (
-                  <div key={item.interview_id} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                  <div key={item.interview_id} className="p-3.5 rounded-lg bg-background border border-border space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-900">{item.company_name}</span>
-                      <span className="text-[11px] px-2 py-0.5 rounded-md bg-blue-100 text-blue-700 font-medium">
+                      <span className="text-xs font-bold text-foreground">{item.company_name}</span>
+                      <span className="text-[11px] px-2 py-0.5 rounded-md bg-accent text-primary font-medium">
                         {item.round_name}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-600 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-slate-400" />
+                    <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-muted-foreground" />
                       {new Date(item.scheduled_time).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}
                     </p>
                     {item.meeting_link && (
@@ -225,7 +295,7 @@ export default function StudentDashboard() {
                         href={item.meeting_link}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline pt-1"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline pt-1"
                       >
                         <span>Join Virtual Room</span>
                         <ExternalLink className="w-3 h-3" />
@@ -238,27 +308,33 @@ export default function StudentDashboard() {
           </div>
 
           {/* Academic Snapshot Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div className="dashboard-card bg-card rounded-xl border border-border shadow-sm p-4">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-bold text-slate-900">Academic Profile</h3>
-              <Link to="/student/profile" className="text-xs font-bold text-blue-600 hover:text-blue-700">Edit</Link>
+              <h3 className="text-sm font-bold text-foreground">Academic Profile</h3>
+              <Link to="/student/profile" className="text-xs font-bold text-primary hover:text-primary">Edit</Link>
             </div>
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">CGPA</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.cgpa || '8.50'}</span>
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">CGPA</span>
+                <span className="text-base font-extrabold font-mono text-foreground">{cgpa.toFixed(2)}</span>
+                <div className="mt-2 h-1.5 rounded-full bg-muted overflow-hidden">
+                  <div className="h-full rounded-full bg-primary" style={{ width: `${Math.min(Math.max(cgpa * 10, 0), 100)}%` }} />
+                </div>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">Branch</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.branch || 'CSE'}</span>
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">Branch</span>
+                <span className="text-base font-extrabold font-mono text-foreground">{user?.branch || 'CSE'}</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">Active Backlogs</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.active_backlogs ?? 0}</span>
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">Active Backlogs</span>
+                <span className={`inline-flex items-center gap-1 text-base font-extrabold font-mono ${activeBacklogs === 0 ? 'text-primary' : 'text-destructive'}`}>
+                  {activeBacklogs}
+                  {activeBacklogs === 0 && <span className="text-[10px] font-sans font-semibold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">Clear</span>}
+                </span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span className="text-slate-400 block text-[11px]">Graduation</span>
-                <span className="text-base font-extrabold text-slate-800">{user?.graduation_year || 2026}</span>
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
+                <span className="text-muted-foreground block text-[11px]">Graduation</span>
+                <span className="text-base font-extrabold font-mono text-foreground">{user?.graduation_year || 2026}</span>
               </div>
             </div>
           </div>

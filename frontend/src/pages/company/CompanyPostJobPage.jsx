@@ -93,14 +93,14 @@ export default function CompanyPostJobPage() {
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Publish Recruitment Drive</h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <h1 className="text-2xl font-extrabold text-foreground tracking-tight">Publish Recruitment Drive</h1>
+        <p className="text-sm text-muted-foreground mt-1">
           Define role responsibilities, define strict DBMS eligibility cutoffs, and configure interview stages.
         </p>
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-xs font-semibold text-red-800 flex items-center gap-2">
+        <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-xs font-semibold text-destructive flex items-center gap-2">
           <AlertCircle className="w-4 h-4 flex-shrink-0" />
           <span>{error}</span>
         </div>
@@ -108,31 +108,31 @@ export default function CompanyPostJobPage() {
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Step 1: Role Overview */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
-          <div className="flex items-center gap-2.5 border-b border-slate-100 pb-3">
-            <Briefcase className="w-5 h-5 text-blue-600" />
-            <h3 className="text-base font-bold text-slate-900">1. Position & Compensation Details</h3>
+        <div className="bg-card rounded-xl border border-border p-6 sm:p-8 shadow-sm space-y-5">
+          <div className="flex items-center gap-2.5 border-b border-border pb-3">
+            <Briefcase className="w-5 h-5 text-primary" />
+            <h3 className="text-base font-bold text-foreground">1. Position & Compensation Details</h3>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Job Title *</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">Job Title *</label>
               <input
                 type="text"
                 required
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="e.g. Software Development Engineer"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Employment Type *</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">Employment Type *</label>
               <select
                 value={formData.role_type}
                 onChange={(e) => setFormData({ ...formData, role_type: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none bg-card"
               >
                 <option value="Full-time">Full-time</option>
                 <option value="Internship">Internship</option>
@@ -143,7 +143,7 @@ export default function CompanyPostJobPage() {
 
           <div className="grid sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">CTC Package (in LPA) *</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">CTC Package (in LPA) *</label>
               <input
                 type="number"
                 step="0.1"
@@ -152,57 +152,57 @@ export default function CompanyPostJobPage() {
                 value={formData.package_lpa}
                 onChange={(e) => setFormData({ ...formData, package_lpa: e.target.value })}
                 placeholder="e.g. 18.5"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none font-bold text-blue-700"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none font-bold text-primary"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Job Location *</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">Job Location *</label>
               <input
                 type="text"
                 required
                 value={formData.location}
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                 placeholder="Bangalore, Hyderabad, Remote"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Application Deadline *</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">Application Deadline *</label>
               <input
                 type="datetime-local"
                 required
                 value={formData.deadline}
                 onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Job Role & Responsibilities Description *</label>
+            <label className="block text-xs font-semibold text-foreground mb-1">Job Role & Responsibilities Description *</label>
             <textarea
               rows={4}
               required
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Describe the candidate responsibilities, day-to-day deliverables, and tech stack..."
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none"
             />
           </div>
         </div>
 
         {/* Step 2: Academic Eligibility Engine */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
-          <div className="flex items-center gap-2.5 border-b border-slate-100 pb-3">
-            <Sparkles className="w-5 h-5 text-indigo-600" />
-            <h3 className="text-base font-bold text-slate-900">2. Automated Eligibility Criteria</h3>
+        <div className="bg-card rounded-xl border border-border p-6 sm:p-8 shadow-sm space-y-5">
+          <div className="flex items-center gap-2.5 border-b border-border pb-3">
+            <Sparkles className="w-5 h-5 text-primary" />
+            <h3 className="text-base font-bold text-foreground">2. Automated Eligibility Criteria</h3>
           </div>
 
           <div className="grid sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Minimum CGPA Cutoff</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">Minimum CGPA Cutoff</label>
               <input
                 type="number"
                 step="0.01"
@@ -211,12 +211,12 @@ export default function CompanyPostJobPage() {
                 required
                 value={formData.min_cgpa}
                 onChange={(e) => setFormData({ ...formData, min_cgpa: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Max Active Backlogs Allowed</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">Max Active Backlogs Allowed</label>
               <input
                 type="number"
                 min="0"
@@ -224,24 +224,24 @@ export default function CompanyPostJobPage() {
                 required
                 value={formData.max_active_backlogs}
                 onChange={(e) => setFormData({ ...formData, max_active_backlogs: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Target Graduation Batch</label>
+              <label className="block text-xs font-semibold text-foreground mb-1">Target Graduation Batch</label>
               <input
                 type="number"
                 required
                 value={formData.graduation_year}
                 onChange={(e) => setFormData({ ...formData, graduation_year: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-input text-sm focus:ring-2 focus:ring-ring focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-2">Allowed Engineering Branches</label>
+            <label className="block text-xs font-semibold text-foreground mb-2">Allowed Engineering Branches</label>
             <div className="flex flex-wrap gap-2">
               {availableBranches.map((branch) => {
                 const isChecked = selectedBranches.includes(branch);
@@ -250,10 +250,10 @@ export default function CompanyPostJobPage() {
                     key={branch}
                     type="button"
                     onClick={() => toggleBranch(branch)}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${
                       isChecked
-                        ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
-                        : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                        ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                        : 'bg-background text-muted-foreground border-border hover:bg-muted'
                     }`}
                   >
                     {branch}
@@ -265,16 +265,16 @@ export default function CompanyPostJobPage() {
         </div>
 
         {/* Step 3: Recruitment Rounds */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div className="bg-card rounded-xl border border-border p-6 sm:p-8 shadow-sm space-y-5">
+          <div className="flex items-center justify-between border-b border-border pb-3">
             <div className="flex items-center gap-2.5">
-              <Layers className="w-5 h-5 text-purple-600" />
-              <h3 className="text-base font-bold text-slate-900">3. Recruitment Interview Rounds</h3>
+              <Layers className="w-5 h-5 text-primary" />
+              <h3 className="text-base font-bold text-foreground">3. Recruitment Interview Rounds</h3>
             </div>
             <button
               type="button"
               onClick={handleAddRound}
-              className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1 transition-all"
+              className="px-3 py-1.5 rounded-lg bg-muted hover:bg-secondary text-foreground text-xs font-semibold flex items-center gap-1 transition-all"
             >
               <PlusCircle className="w-3.5 h-3.5" />
               <span>Add Stage</span>
@@ -283,8 +283,8 @@ export default function CompanyPostJobPage() {
 
           <div className="space-y-3">
             {rounds.map((round, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                <span className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
+              <div key={idx} className="p-4 rounded-lg bg-background border border-border flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <span className="w-7 h-7 rounded-full bg-card text-primary-foreground flex items-center justify-center text-xs font-bold flex-shrink-0">
                   {round.round_number}
                 </span>
 
@@ -299,7 +299,7 @@ export default function CompanyPostJobPage() {
                       setRounds(updated);
                     }}
                     placeholder="Round Name (e.g. Technical Round 1)"
-                    className="px-3 py-1.5 rounded-lg border border-slate-200 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="px-3 py-1.5 rounded-lg border border-border text-xs bg-card focus:outline-none focus:ring-1 focus:ring-ring"
                   />
 
                   <select
@@ -309,7 +309,7 @@ export default function CompanyPostJobPage() {
                       updated[idx].round_type = e.target.value;
                       setRounds(updated);
                     }}
-                    className="px-3 py-1.5 rounded-lg border border-slate-200 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="px-3 py-1.5 rounded-lg border border-border text-xs bg-card focus:outline-none focus:ring-1 focus:ring-ring"
                   >
                     <option value="Online Test">Online Test / Assessment</option>
                     <option value="Technical">Technical Interview</option>
@@ -327,7 +327,7 @@ export default function CompanyPostJobPage() {
                       setRounds(updated);
                     }}
                     placeholder="Brief description"
-                    className="px-3 py-1.5 rounded-lg border border-slate-200 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="px-3 py-1.5 rounded-lg border border-border text-xs bg-card focus:outline-none focus:ring-1 focus:ring-ring"
                   />
                 </div>
 
@@ -335,7 +335,7 @@ export default function CompanyPostJobPage() {
                   <button
                     type="button"
                     onClick={() => handleRemoveRound(idx)}
-                    className="text-slate-400 hover:text-red-500 p-1"
+                    className="text-muted-foreground hover:text-destructive p-1"
                     title="Remove round"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -351,7 +351,7 @@ export default function CompanyPostJobPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="py-3 px-8 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-lg shadow-blue-600/25 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
+            className="py-3 px-8 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
           >
             <Save className="w-4 h-4" />
             <span>{submitting ? 'Publishing Drive...' : 'Publish Campus Recruitment Drive'}</span>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import BackgroundPaths from '../../components/BackgroundPaths';
 import {
   Users,
   Building2,
@@ -48,7 +49,7 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-24">
-        <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -69,17 +70,20 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8">
       {/* Banner */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 text-white shadow-xl shadow-purple-900/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-purple-200">Institutional Placement Cell</span>
+      <div className="relative overflow-hidden p-6 rounded-xl token-primary-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <BackgroundPaths opacity={0.15} colorClass="text-primary-foreground" count={12} />
+        <div className="absolute -right-12 -top-20 h-48 w-48 rounded-full bg-primary-foreground/10" />
+        <div className="absolute right-40 -bottom-28 h-56 w-56 rounded-full bg-primary-foreground/10" />
+        <div className="relative z-10">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">Institutional Placement Cell</span>
           <h2 className="text-2xl font-extrabold tracking-tight mt-1">Campus Placement Intelligence Center</h2>
-          <p className="text-sm text-purple-100 mt-1">
+          <p className="text-sm text-primary-foreground/80 mt-1">
             Real-time DBMS relational metrics for student recruitments, company approvals, and compensation benchmarks.
           </p>
         </div>
         <Link
           to="/admin/reports"
-          className="px-5 py-2.5 rounded-xl bg-white text-purple-900 text-xs font-bold shadow hover:bg-purple-50 transition-all flex items-center gap-2 whitespace-nowrap"
+          className="relative z-10 px-5 py-2.5 rounded-full bg-card text-primary hover:bg-accent text-xs font-bold shadow transition-all flex items-center gap-2 whitespace-nowrap pressable"
         >
           <FileSpreadsheet className="w-4 h-4" />
           <span>Generate Placement Report</span>
@@ -88,46 +92,46 @@ export default function AdminDashboard() {
 
       {/* Main KPI Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Total Students</p>
-            <p className="text-3xl font-extrabold text-slate-900 mt-1">{analytics?.total_students || 0}</p>
-            <p className="text-[11px] text-slate-400 mt-0.5">{analytics?.placed_students || 0} Placed</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Total Students</p>
+            <p className="text-3xl font-extrabold text-foreground mt-1">{analytics?.total_students || 0}</p>
+            <p className="text-[11px] text-muted-foreground mt-0.5">{analytics?.placed_students || 0} Placed</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center">
             <Users className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Placement Rate</p>
-            <p className="text-3xl font-extrabold text-emerald-600 mt-1">{analytics?.placement_rate || 0}%</p>
-            <p className="text-[11px] text-emerald-700 mt-0.5">Batch 2026</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Placement Rate</p>
+            <p className="text-3xl font-extrabold text-primary mt-1">{analytics?.placement_rate || 0}%</p>
+            <p className="text-[11px] text-primary mt-0.5">Batch 2026</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Average Package</p>
-            <p className="text-3xl font-extrabold text-purple-600 mt-1">₹ {analytics?.avg_package || 0} <span className="text-base font-semibold">LPA</span></p>
-            <p className="text-[11px] text-slate-400 mt-0.5">Peak: ₹ {analytics?.highest_package || 0} LPA</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Average Package</p>
+            <p className="text-3xl font-extrabold text-primary mt-1">₹ {analytics?.avg_package || 0} <span className="text-base font-semibold">LPA</span></p>
+            <p className="text-[11px] text-muted-foreground mt-0.5">Peak: ₹ {analytics?.highest_package || 0} LPA</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center">
             <TrendingUp className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div className="bg-card p-5 rounded-xl border border-border shadow-sm flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Recruiting Partners</p>
-            <p className="text-3xl font-extrabold text-indigo-600 mt-1">{analytics?.total_companies || 0}</p>
-            <p className="text-[11px] text-slate-400 mt-0.5">{analytics?.active_jobs || 0} Active Drives</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Recruiting Partners</p>
+            <p className="text-3xl font-extrabold text-primary mt-1">{analytics?.total_companies || 0}</p>
+            <p className="text-[11px] text-muted-foreground mt-0.5">{analytics?.active_jobs || 0} Active Drives</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center">
             <Building2 className="w-6 h-6" />
           </div>
         </div>
@@ -136,53 +140,53 @@ export default function AdminDashboard() {
       {/* Analytics Charts */}
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Branch-wise placement comparison chart */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div className="bg-card rounded-xl border border-border p-6 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-bold text-slate-900">Branch-wise Placement Statistics</h3>
-              <p className="text-xs text-slate-500 mt-0.5">Total eligible students vs placed candidates per engineering discipline</p>
+              <h3 className="text-base font-bold text-foreground">Branch-wise Placement Statistics</h3>
+              <p className="text-xs text-muted-foreground mt-0.5">Total eligible students vs placed candidates per engineering discipline</p>
             </div>
-            <BarChart3 className="w-5 h-5 text-blue-600" />
+            <BarChart3 className="w-5 h-5 text-primary" />
           </div>
 
           <div className="h-72 w-full pt-4">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={branchChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} />
+                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderRadius: '12px', color: '#fff', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 'var(--radius)', color: 'hsl(var(--foreground))', fontSize: '12px' }}
                 />
                 <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
-                <Bar dataKey="Total" fill="#94a3b8" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="Placed" fill="#2563eb" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Total" fill="hsl(var(--secondary-foreground))" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Placed" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Company Package & Offer Distribution */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div className="bg-card rounded-xl border border-border p-6 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-bold text-slate-900">Top Recruiting Partners & CTC Benchmark</h3>
-              <p className="text-xs text-slate-500 mt-0.5">Average salary offered per corporate recruiter (in LPA)</p>
+              <h3 className="text-base font-bold text-foreground">Top Recruiting Partners & CTC Benchmark</h3>
+              <p className="text-xs text-muted-foreground mt-0.5">Average salary offered per corporate recruiter (in LPA)</p>
             </div>
-            <Award className="w-5 h-5 text-purple-600" />
+            <Award className="w-5 h-5 text-primary" />
           </div>
 
           <div className="h-72 w-full pt-4">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={companyChartData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} />
+                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderRadius: '12px', color: '#fff', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 'var(--radius)', color: 'hsl(var(--foreground))', fontSize: '12px' }}
                 />
                 <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
-                <Bar dataKey="AvgPackage" name="Avg CTC (LPA)" fill="#7c3aed" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="AvgPackage" name="Avg CTC (LPA)" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -193,35 +197,35 @@ export default function AdminDashboard() {
       <div className="grid md:grid-cols-3 gap-5">
         <Link
           to="/admin/companies"
-          className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex items-center justify-between group"
+          className="p-5 rounded-xl bg-card border border-border hover:border-border hover:shadow-sm transition-all flex items-center justify-between group"
         >
           <div>
-            <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Verify Companies</h4>
-            <p className="text-xs text-slate-500 mt-0.5">Review corporate recruiter verification requests</p>
+            <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">Verify Companies</h4>
+            <p className="text-xs text-muted-foreground mt-0.5">Review corporate recruiter verification requests</p>
           </div>
-          <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
         </Link>
 
         <Link
           to="/admin/jobs"
-          className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex items-center justify-between group"
+          className="p-5 rounded-xl bg-card border border-border hover:border-border hover:shadow-sm transition-all flex items-center justify-between group"
         >
           <div>
-            <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Moderate Job Drives</h4>
-            <p className="text-xs text-slate-500 mt-0.5">Approve or reject on-campus job drives</p>
+            <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">Moderate Job Drives</h4>
+            <p className="text-xs text-muted-foreground mt-0.5">Approve or reject on-campus job drives</p>
           </div>
-          <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
         </Link>
 
         <Link
           to="/admin/students"
-          className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex items-center justify-between group"
+          className="p-5 rounded-xl bg-card border border-border hover:border-border hover:shadow-sm transition-all flex items-center justify-between group"
         >
           <div>
-            <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Student Directory</h4>
-            <p className="text-xs text-slate-500 mt-0.5">Inspect academic records & toggle account states</p>
+            <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">Student Directory</h4>
+            <p className="text-xs text-muted-foreground mt-0.5">Inspect academic records & toggle account states</p>
           </div>
-          <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
         </Link>
       </div>
     </div>

@@ -25,34 +25,34 @@ export default function StudentInterviewsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Interview Schedules</h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <h1 className="text-2xl font-extrabold text-foreground tracking-tight">Interview Schedules</h1>
+        <p className="text-sm text-muted-foreground mt-1">
           Stay prepared for upcoming recruitment rounds and review interviewer feedback.
         </p>
       </div>
 
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : interviews.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
-          <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-slate-800">No interviews scheduled yet</h3>
-          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+        <div className="bg-card rounded-xl border border-border p-12 text-center">
+          <Calendar className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+          <h3 className="text-base font-bold text-foreground">No interviews scheduled yet</h3>
+          <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
             Once companies shortlist your application for technical or HR rounds, interview slots will appear here.
           </p>
         </div>
       ) : (
         <div className="space-y-4">
           {interviews.map((item) => (
-            <div key={item.interview_id} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+            <div key={item.interview_id} className="bg-card rounded-xl border border-border p-6 shadow-sm space-y-4">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{item.company_name}</span>
-                  <h3 className="text-lg font-bold text-slate-900 mt-0.5">{item.job_title}</h3>
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{item.company_name}</span>
+                  <h3 className="text-lg font-bold text-foreground mt-0.5">{item.job_title}</h3>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+                    <span className="px-2.5 py-0.5 rounded-md bg-accent text-primary text-xs font-bold border border-border">
                       {item.round_name} ({item.round_type})
                     </span>
                   </div>
@@ -60,28 +60,28 @@ export default function StudentInterviewsPage() {
 
                 <div className="flex items-center gap-3">
                   <span className={`px-3 py-1 rounded-full text-xs font-bold border ${
-                    item.status === 'Completed' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-blue-50 text-blue-700 border-blue-200'
+                    item.status === 'Completed' ? 'bg-accent text-primary border-border' : 'bg-accent text-primary border-border'
                   }`}>
                     {item.status}
                   </span>
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 text-xs text-slate-600 p-4 rounded-xl bg-slate-50 border border-slate-100">
+              <div className="grid sm:grid-cols-2 gap-4 text-xs text-muted-foreground p-4 rounded-lg bg-background border border-border">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <Clock className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>Time: <strong>{new Date(item.scheduled_time).toLocaleString([], { dateStyle: 'full', timeStyle: 'short' })}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                   <span>Mode / Venue: <strong>{item.location || 'Virtual Video Call'}</strong></span>
                 </div>
               </div>
 
               {item.feedback && (
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
-                  <span className="font-bold text-slate-700 block mb-0.5">Interviewer Feedback:</span>
-                  <p className="text-slate-600 leading-relaxed">{item.feedback}</p>
+                <div className="p-3.5 rounded-lg bg-background border border-border text-xs">
+                  <span className="font-bold text-foreground block mb-0.5">Interviewer Feedback:</span>
+                  <p className="text-muted-foreground leading-relaxed">{item.feedback}</p>
                 </div>
               )}
 
@@ -91,7 +91,7 @@ export default function StudentInterviewsPage() {
                     href={item.meeting_link}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold shadow-md hover:bg-blue-700 transition-all flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold shadow-sm hover:bg-primary/90 transition-all flex items-center gap-1.5"
                   >
                     <Video className="w-3.5 h-3.5" />
                     <span>Join Video Meeting</span>

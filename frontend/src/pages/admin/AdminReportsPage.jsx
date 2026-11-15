@@ -76,15 +76,15 @@ export default function AdminReportsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Institutional Placement Report</h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <h1 className="text-2xl font-extrabold text-foreground tracking-tight">Institutional Placement Report</h1>
+          <p className="text-sm text-muted-foreground mt-1">
             Official academic compilation of student recruitment outcomes, company offers, and compensation analytics.
           </p>
         </div>
         <button
           onClick={exportCSV}
           disabled={report.length === 0}
-          className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+          className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
         >
           <Download className="w-4 h-4" />
           <span>Export Official Report (CSV)</span>
@@ -93,33 +93,33 @@ export default function AdminReportsPage() {
 
       {/* Highlights Strip */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">
-          <p className="text-xs text-slate-500 font-semibold uppercase">Total Students</p>
-          <p className="text-2xl font-extrabold text-slate-900 mt-1">{totalStudents}</p>
+        <div className="bg-card p-4 rounded-lg border border-border text-center">
+          <p className="text-xs text-muted-foreground font-semibold uppercase">Total Students</p>
+          <p className="text-2xl font-extrabold text-foreground mt-1">{totalStudents}</p>
         </div>
-        <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">
-          <p className="text-xs text-slate-500 font-semibold uppercase">Placed Candidates</p>
-          <p className="text-2xl font-extrabold text-emerald-600 mt-1">{placedStudents}</p>
+        <div className="bg-card p-4 rounded-lg border border-border text-center">
+          <p className="text-xs text-muted-foreground font-semibold uppercase">Placed Candidates</p>
+          <p className="text-2xl font-extrabold text-primary mt-1">{placedStudents}</p>
         </div>
-        <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">
-          <p className="text-xs text-slate-500 font-semibold uppercase">Placement Success Rate</p>
-          <p className="text-2xl font-extrabold text-blue-600 mt-1">{placementRate}%</p>
+        <div className="bg-card p-4 rounded-lg border border-border text-center">
+          <p className="text-xs text-muted-foreground font-semibold uppercase">Placement Success Rate</p>
+          <p className="text-2xl font-extrabold text-primary mt-1">{placementRate}%</p>
         </div>
       </div>
 
       {/* Filter toolbar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between text-xs">
+      <div className="bg-card p-4 rounded-xl border border-border shadow-sm flex items-center justify-between text-xs">
         <div className="relative w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-2.5" />
+          <Search className="w-4 h-4 text-muted-foreground absolute left-3.5 top-2.5" />
           <input
             type="text"
             placeholder="Search report by name, roll, branch or recruiter..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
-        <span className="text-slate-400 font-medium">
+        <span className="text-muted-foreground font-medium">
           {filteredReport.length} Records Shown
         </span>
       </div>
@@ -127,13 +127,13 @@ export default function AdminReportsPage() {
       {/* Report Table */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-100">
+              <thead className="bg-background text-muted-foreground font-semibold border-b border-border">
                 <tr>
                   <th className="p-3.5 pl-6">USN / Roll</th>
                   <th className="p-3.5">Candidate Name</th>
@@ -145,28 +145,28 @@ export default function AdminReportsPage() {
                   <th className="p-3.5 text-right pr-6">Offered CTC</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-border">
                 {filteredReport.map((r, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/80 transition-all">
-                    <td className="p-3.5 pl-6 font-mono font-bold text-slate-700">{r.roll_number}</td>
-                    <td className="p-3.5 font-bold text-slate-900">{r.student_name}</td>
-                    <td className="p-3.5 text-slate-700 font-semibold">{r.branch}</td>
-                    <td className="p-3.5 font-extrabold text-blue-700">{r.cgpa}</td>
+                  <tr key={idx} className="hover:bg-background/80 transition-all">
+                    <td className="p-3.5 pl-6 font-mono font-bold text-foreground">{r.roll_number}</td>
+                    <td className="p-3.5 font-bold text-foreground">{r.student_name}</td>
+                    <td className="p-3.5 text-foreground font-semibold">{r.branch}</td>
+                    <td className="p-3.5 font-extrabold text-primary">{r.cgpa}</td>
                     <td className="p-3.5">
                       <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                        r.is_placed ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-600'
+                        r.is_placed ? 'bg-accent text-primary' : 'bg-muted text-muted-foreground'
                       }`}>
                         {r.is_placed ? 'Placed' : 'Seeking'}
                       </span>
                     </td>
-                    <td className="p-3.5 font-semibold text-slate-800">
-                      {r.company_name || <span className="text-slate-400 font-normal">—</span>}
+                    <td className="p-3.5 font-semibold text-foreground">
+                      {r.company_name || <span className="text-muted-foreground font-normal">—</span>}
                     </td>
-                    <td className="p-3.5 text-slate-600">
-                      {r.job_title || <span className="text-slate-400">—</span>}
+                    <td className="p-3.5 text-muted-foreground">
+                      {r.job_title || <span className="text-muted-foreground">—</span>}
                     </td>
-                    <td className="p-3.5 text-right pr-6 font-extrabold text-emerald-700 text-sm">
-                      {r.package_lpa ? `₹ ${r.package_lpa} LPA` : <span className="text-slate-400 font-normal">—</span>}
+                    <td className="p-3.5 text-right pr-6 font-extrabold text-primary text-sm">
+                      {r.package_lpa ? `₹ ${r.package_lpa} LPA` : <span className="text-muted-foreground font-normal">—</span>}
                     </td>
                   </tr>
                 ))}
