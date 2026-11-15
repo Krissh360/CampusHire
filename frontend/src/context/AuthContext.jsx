@@ -1,14 +1,15 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import api from '../services/api';
+import { LEGACY_STORAGE_KEYS, STORAGE_KEYS, readMigratedStorage } from '../config/brand';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('campushire_user');
+    const saved = readMigratedStorage(STORAGE_KEYS.user, LEGACY_STORAGE_KEYS.user);
     return saved ? JSON.parse(saved) : null;
   });
-  const [token, setToken] = useState(() => localStorage.getItem('campushire_token') || null);
+  const [token, setToken] = useState(() => readMigratedStorage(STORAGE_KEYS.token, LEGACY_STORAGE_KEYS.token) || null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
           const res = await api.get('/auth/me');
           if (res.data.success) {
             setUser(res.data.user);
-            localStorage.setItem('campushire_user', JSON.stringify(res.data.user));
+            localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(res.data.user));
           }
         } catch (err) {
           console.error('Session verification failed:', err);
@@ -37,8 +38,8 @@ export const AuthProvider = ({ children }) => {
       const { token: newToken, user: userData } = res.data;
       setToken(newToken);
       setUser(userData);
-      localStorage.setItem('campushire_token', newToken);
-      localStorage.setItem('campushire_user', JSON.stringify(userData));
+      localStorage.setItem(STORAGE_KEYS.token, newToken);
+      localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(userData));
       return userData;
     }
     throw new Error(res.data.message || 'Login failed');
@@ -50,8 +51,8 @@ export const AuthProvider = ({ children }) => {
       const { token: newToken, user: userData } = res.data;
       setToken(newToken);
       setUser(userData);
-      localStorage.setItem('campushire_token', newToken);
-      localStorage.setItem('campushire_user', JSON.stringify(userData));
+      localStorage.setItem(STORAGE_KEYS.token, newToken);
+      localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(userData));
       return userData;
     }
     throw new Error(res.data.message || 'Registration failed');
@@ -63,8 +64,8 @@ export const AuthProvider = ({ children }) => {
       const { token: newToken, user: userData } = res.data;
       setToken(newToken);
       setUser(userData);
-      localStorage.setItem('campushire_token', newToken);
-      localStorage.setItem('campushire_user', JSON.stringify(userData));
+      localStorage.setItem(STORAGE_KEYS.token, newToken);
+      localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(userData));
       return userData;
     }
     throw new Error(res.data.message || 'Registration failed');
@@ -73,8 +74,10 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem('campushire_token');
-    localStorage.removeItem('campushire_user');
+    localStorage.removeItem(STORAGE_KEYS.token);
+    localStorage.removeItem(STORAGE_KEYS.user);
+    localStorage.removeItem(LEGACY_STORAGE_KEYS.token);
+    localStorage.removeItem(LEGACY_STORAGE_KEYS.user);
   };
 
   const refreshProfile = async () => {
@@ -83,7 +86,7 @@ export const AuthProvider = ({ children }) => {
         const res = await api.get('/auth/me');
         if (res.data.success) {
           setUser(res.data.user);
-          localStorage.setItem('campushire_user', JSON.stringify(res.data.user));
+          localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(res.data.user));
         }
       } catch (e) {
         console.error('Failed to refresh profile:', e);

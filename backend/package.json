@@ -1,7 +1,7 @@
 {
   "name": "campushire-backend",
   "version": "1.0.0",
-  "description": "Backend API for CampusHire College Placement and Recruitment Management System",
+  "description": "Backend API for SPARK Student Placement And Recruitment Kit",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -18,7 +18,7 @@
     "jwt",
     "academic-project"
   ],
-  "author": "CampusHire Team",
+  "author": "SPARK Team",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -46,3 +46,6 @@ Desktop.ini
 !.vscode/settings.json
 *.swp
 *.swo
+
+#screenshots
+screenshots/*

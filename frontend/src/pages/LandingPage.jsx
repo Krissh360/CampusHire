@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import BackgroundPaths from '../components/BackgroundPaths';
 import {
   GraduationCap,
+  Zap,
   ShieldCheck,
   ArrowRight,
   CalendarClock,
@@ -10,6 +11,7 @@ import {
   Building2,
   Users,
 } from 'lucide-react';
+import { APP_FULL_NAME, APP_NAME } from '../config/brand';
 
 export default function LandingPage() {
   const features = [
@@ -50,9 +52,9 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="app-logo w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
-              <GraduationCap className="w-5 h-5" />
+              <Zap className="w-5 h-5" aria-hidden="true" />
             </div>
-            <span className="text-xl font-extrabold text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>
+            <span className="text-xl font-extrabold text-foreground tracking-tight"><span>{APP_NAME.slice(0, 3)}</span><span className="text-primary">{APP_NAME.slice(3)}</span></span>
           </div>
 
           <nav aria-label="Primary navigation" className="flex items-center gap-3">
@@ -78,7 +80,7 @@ export default function LandingPage() {
         <BackgroundPaths opacity={0.3} count={16} colorClass="text-primary" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent border border-border text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-            CAMPUS PLACEMENT PORTAL · SEASON 2026
+            {APP_NAME} · {APP_FULL_NAME.toUpperCase()}
           </div>
 
           <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight max-w-4xl mx-auto leading-tight">
@@ -86,7 +88,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-normal">
-            CampusHire connects students, recruiters, and placement officers in a single place. Eligibility is checked automatically, interviews are scheduled without clashes, and results show up in real time.
+            {APP_NAME} connects students, recruiters, and placement officers in a single place. Eligibility is checked automatically, interviews are scheduled without clashes, and results show up in real time.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -160,9 +162,12 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="mt-auto bg-card text-muted-foreground py-10 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-2 text-foreground font-bold">
-            <GraduationCap className="w-4 h-4 text-primary" />
-            <span>CampusHire Management System</span>
+          <div className="flex flex-col items-center sm:items-start text-foreground font-bold">
+            <div className="flex items-center gap-2">
+              <Zap className="w-4 h-4 text-primary" aria-hidden="true" />
+              <span>{APP_NAME}</span>
+            </div>
+            <span className="mt-1 text-xs font-normal text-muted-foreground">{APP_FULL_NAME}</span>
           </div>
           <div className="text-center sm:text-right">
             <p>Built on a normalized relational schema with trigger-enforced eligibility rules, transactional offer handling, and indexed analytics queries.</p>

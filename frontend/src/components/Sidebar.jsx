@@ -13,8 +13,9 @@ import {
   BarChart3,
   FileSpreadsheet,
   PlusCircle,
-  GraduationCap
+  Zap
 } from 'lucide-react';
+import { APP_NAME } from '../config/brand';
 
 export default function Sidebar() {
   const { user } = useAuth();
@@ -67,11 +68,11 @@ export default function Sidebar() {
       <div className="p-6 border-b border-border">
         <div className="flex items-center gap-3">
           <div className="app-logo w-10 h-10 rounded-full token-primary-surface flex items-center justify-center shadow-sm">
-            <GraduationCap className="w-6 h-6" />
+            <Zap className="w-6 h-6" aria-hidden="true" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-foreground tracking-tight">CampusHire</h1>
-            <p className="text-xs text-muted-foreground">Recruitment Portal</p>
+            <h1 className="text-lg font-extrabold text-foreground tracking-tight"><span>{APP_NAME.slice(0, 3)}</span><span className="text-primary">{APP_NAME.slice(3)}</span></h1>
+            <p className="text-xs text-muted-foreground">Placement Portal</p>
           </div>
         </div>
 

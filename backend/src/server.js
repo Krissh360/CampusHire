@@ -46,7 +46,7 @@ app.get('/api/health', (req, res) => {
   const dbStatus = checkDbStatus();
   res.status(200).json({
     success: true,
-    application: 'CampusHire API',
+    application: 'SPARK API',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
     database: {
@@ -82,7 +82,7 @@ app.use(errorHandler);
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`====================================================`);
-    console.log(`🚀 CampusHire Backend API running on port ${PORT}`);
+    console.log(`🚀 SPARK Backend API running on port ${PORT}`);
     console.log(`📡 URL: http://localhost:${PORT}`);
     console.log(`🩺 Health check: http://localhost:${PORT}/api/health`);
     console.log(`====================================================`);

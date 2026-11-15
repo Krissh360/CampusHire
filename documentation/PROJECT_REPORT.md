@@ -1,12 +1,12 @@
-# CampusHire — College Placement and Recruitment Management System
+# SPARK — Student Placement And Recruitment Kit
 ## Comprehensive DBMS Academic Project Documentation & Technical Report
 
 ---
 
 ### 1. Project Abstract
-**CampusHire** is an enterprise-grade, full-stack campus placement and recruitment management web application designed to digitize and automate the entire collegiate recruitment workflow. It connects three primary stakeholders: **Students**, **Corporate Recruiters (Companies)**, and **Placement Officers (Administrators)**. 
+**SPARK (Student Placement And Recruitment Kit)** is an enterprise-grade, full-stack campus placement and recruitment management web application designed to digitize and automate the entire collegiate recruitment workflow. It connects three primary stakeholders: **Students**, **Corporate Recruiters (Companies)**, and **Placement Officers (Administrators)**.
 
-Built on a strictly normalized MySQL relational database (3NF), Node.js/Express REST backend, and a modern React.js frontend, CampusHire provides automated academic eligibility checking, multi-round interview tracking, application audit logging, dynamic offer generation, and institutional placement business intelligence.
+Built on a strictly normalized MySQL relational database (3NF), Node.js/Express REST backend, and a modern React.js frontend, SPARK provides automated academic eligibility checking, multi-round interview tracking, application audit logging, dynamic offer generation, and institutional placement business intelligence.
 
 ---
 

@@ -3,13 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CampusHire — College Placement & Recruitment Management System</title>
+    <title>SPARK | Campus Placement Portal</title>
+    <meta name="description" content="SPARK — Student Placement And Recruitment Kit. Every placement, one platform." />
+    <meta property="og:title" content="SPARK | Campus Placement Portal" />
+    <meta property="og:description" content="Student Placement And Recruitment Kit for managing every placement in one platform." />
+    <link rel="icon" type="image/svg+xml" href="/spark-favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       (() => {
-        const stored = localStorage.getItem('campushire-theme');
+        const currentThemeKey = 'spark-theme';
+        const legacyThemeKey = 'campushire-theme';
+        const stored = localStorage.getItem(currentThemeKey) || localStorage.getItem(legacyThemeKey);
+        if (stored && !localStorage.getItem(currentThemeKey)) {
+          localStorage.setItem(currentThemeKey, stored);
+          localStorage.removeItem(legacyThemeKey);
+        }
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (stored === 'dark' || (!stored && prefersDark)) {
           document.documentElement.classList.add('dark');

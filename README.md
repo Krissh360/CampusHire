@@ -1,7 +1,7 @@
-# CampusHire — College Placement & Recruitment Management System
+# SPARK — Student Placement And Recruitment Kit
 ### Full-Stack DBMS Academic Capstone Project
 
-CampusHire is a production-quality web platform that digitizes and automates the collegiate campus recruitment lifecycle. It bridges Students, Corporate Recruiters, and College Placement Officers with automated eligibility verification, multi-round interview tracking, application audit logging, offer generation, and institutional placement business intelligence.
+SPARK (Student Placement And Recruitment Kit) is a production-quality web platform that digitizes and automates the collegiate campus recruitment lifecycle. Every placement, one platform: it bridges Students, Corporate Recruiters, and College Placement Officers with automated eligibility verification, multi-round interview tracking, application audit logging, offer generation, and institutional placement business intelligence.
 
 ---
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut, Moon, Sun } from 'lucide-react';
+import { APP_NAME, STORAGE_KEYS } from '../config/brand';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -11,7 +12,7 @@ export default function Navbar() {
   const toggleTheme = () => {
     const next = !isDark;
     document.documentElement.classList.toggle('dark', next);
-    localStorage.setItem('campushire-theme', next ? 'dark' : 'light');
+    localStorage.setItem(STORAGE_KEYS.theme, next ? 'dark' : 'light');
     setIsDark(next);
   };
 
@@ -50,7 +51,7 @@ export default function Navbar() {
         </button>
         <button
           onClick={handleLogout}
-          title="Sign out of CampusHire"
+          title={`Sign out of ${APP_NAME}`}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full token-primary-surface hover:opacity-90 text-xs font-semibold transition-all pressable"
         >
           <LogOut className="w-3.5 h-3.5" />

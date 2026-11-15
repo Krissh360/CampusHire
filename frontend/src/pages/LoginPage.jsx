@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { GraduationCap, Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
+import { Zap, Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
 import BackgroundPaths from '../components/BackgroundPaths';
+import { APP_NAME } from '../config/brand';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -43,9 +44,9 @@ export default function LoginPage() {
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md text-center">
         <Link to="/" className="inline-flex items-center gap-2 mb-4">
           <div className="app-logo w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
-            <GraduationCap className="w-6 h-6" />
+            <Zap className="w-6 h-6" aria-hidden="true" />
           </div>
-          <span className="text-2xl font-black text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>
+          <span className="text-2xl font-extrabold text-foreground tracking-tight"><span>{APP_NAME.slice(0, 3)}</span><span className="text-primary">{APP_NAME.slice(3)}</span></span>
         </Link>
         <h2 className="text-2xl font-bold text-foreground tracking-tight">Sign in to your account</h2>
         <p className="mt-1 text-sm text-muted-foreground">Access your placement dashboard and job opportunities</p>

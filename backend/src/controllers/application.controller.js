@@ -86,7 +86,7 @@ async function applyForJob(req, res, next) {
     // 4. Insert application record
     const [result] = await db.query(
       'INSERT INTO applications (job_id, student_id, notes) VALUES (?, ?, ?)',
-      [job_id, studentId, notes || 'Applied via CampusHire Portal']
+      [job_id, studentId, notes || 'Applied via SPARK Portal']
     );
 
     const applicationId = result.insertId;
