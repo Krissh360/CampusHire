@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import {
   FileText,
@@ -54,16 +55,24 @@ export default function StudentApplicationsPage() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Selected':
-        return 'bg-accent text-primary border-border';
+        return 'bg-chart-1/10 text-chart-1 border-chart-1/30';
       case 'Interview Scheduled':
-        return 'bg-accent text-primary border-border';
+        return 'bg-chart-3/10 text-chart-3 border-chart-3/30';
       case 'Shortlisted':
-        return 'bg-accent text-primary border-border';
+        return 'bg-chart-4/10 text-chart-4 border-chart-4/30';
       case 'Rejected':
         return 'bg-destructive/10 text-destructive border-destructive/30';
       default:
-        return 'bg-chart-3/10 text-chart-3 border-chart-3/30';
+        return 'bg-chart-2/10 text-chart-2 border-chart-2/30';
     }
+  };
+
+  const getStatusDot = (status) => {
+    if (status === 'Selected') return 'bg-chart-1';
+    if (status === 'Interview Scheduled') return 'bg-chart-3';
+    if (status === 'Shortlisted') return 'bg-chart-4';
+    if (status === 'Rejected') return 'bg-destructive';
+    return 'bg-chart-2';
   };
 
   const stages = ['Applied', 'Under Review', 'Shortlisted', 'Interview Scheduled', 'Selected'];
@@ -83,11 +92,16 @@ export default function StudentApplicationsPage() {
         </div>
       ) : applications.length === 0 ? (
         <div className="bg-card rounded-xl border border-border p-12 text-center">
-          <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+          <div className="mx-auto w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
+            <FileText className="w-5 h-5" />
+          </div>
           <h3 className="text-base font-bold text-foreground">No applications submitted yet</h3>
           <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
             You haven't applied for any recruitment drives yet. Browse the open drives to apply.
           </p>
+          <Link to="/student/jobs" className="mt-4 inline-flex px-3 py-1.5 rounded-full border border-border text-xs font-semibold text-foreground hover:bg-accent pressable">
+            Browse drives
+          </Link>
         </div>
       ) : (
         <div className="space-y-4">
@@ -96,7 +110,7 @@ export default function StudentApplicationsPage() {
             const isRejected = app.status === 'Rejected';
 
             return (
-              <div key={app.application_id} className="bg-card rounded-xl border border-border p-6 shadow-sm space-y-4">
+              <div key={app.application_id} className="interactive-card bg-card rounded-xl border border-border p-6 shadow-sm space-y-4">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
                     <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{app.company_name}</span>
@@ -109,7 +123,8 @@ export default function StudentApplicationsPage() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getStatusBadge(app.status)}`}>
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${getStatusBadge(app.status)}`}>
+                      <span className={`h-1.5 w-1.5 rounded-full ${getStatusDot(app.status)}`} />
                       {app.status}
                     </span>
                     <button

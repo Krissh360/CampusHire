@@ -160,11 +160,16 @@ export default function StudentJobsPage() {
         </div>
       ) : filteredJobs.length === 0 ? (
         <div className="bg-card rounded-xl border border-border p-12 text-center">
-          <Briefcase className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+          <div className="mx-auto w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
+            <Briefcase className="w-5 h-5" />
+          </div>
           <h3 className="text-base font-bold text-foreground">No recruitment drives found</h3>
           <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
             Try adjusting your search filters or uncheck the eligibility filter to view all campus opportunities.
           </p>
+          <button type="button" onClick={() => { setSearchTerm(''); setFilterRole(''); setFilterMinPackage(''); setFilterEligibleOnly(false); }} className="mt-4 inline-flex px-3 py-1.5 rounded-full border border-border text-xs font-semibold text-foreground hover:bg-accent pressable">
+            Clear filters
+          </button>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -173,7 +178,7 @@ export default function StudentJobsPage() {
             return (
               <div
                 key={job.job_id}
-                className="bg-card rounded-xl border border-border hover:border-primary hover:shadow-sm hover:shadow-none transition-all p-6 flex flex-col justify-between"
+                className="interactive-card bg-card rounded-xl border border-border hover:border-primary transition-all p-6 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-3">

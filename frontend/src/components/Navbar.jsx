@@ -45,13 +45,13 @@ export default function Navbar() {
           <p className="text-[11px] text-muted-foreground capitalize">Role: {user?.role}</p>
         </div>
 
-        <button onClick={toggleTheme} title={isDark ? 'Use light theme' : 'Use dark theme'} className="p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+        <button onClick={toggleTheme} title={isDark ? 'Use light theme' : 'Use dark theme'} className="p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors pressable">
           {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
         </button>
         <button
           onClick={handleLogout}
           title="Sign out of CampusHire"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-destructive hover:border-destructive/30 hover:bg-destructive/10 text-xs font-medium transition-all"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-destructive hover:border-destructive/30 hover:bg-destructive/10 text-xs font-medium transition-all pressable"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Logout</span>
