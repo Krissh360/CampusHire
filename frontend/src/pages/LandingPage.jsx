@@ -3,17 +3,46 @@ import { Link } from 'react-router-dom';
 import BackgroundPaths from '../components/BackgroundPaths';
 import {
   GraduationCap,
-  Building2,
   ShieldCheck,
-  CheckCircle2,
   ArrowRight,
-  TrendingUp,
-  Award,
-  Users2,
-  Layers
+  CalendarClock,
+  BarChart3,
+  Building2,
+  Users,
 } from 'lucide-react';
 
 export default function LandingPage() {
+  const features = [
+    {
+      icon: ShieldCheck,
+      title: 'Instant eligibility checks',
+      description: 'CGPA, backlogs, branch, and batch criteria are verified the moment you apply, so you only see drives you can actually join.',
+    },
+    {
+      icon: CalendarClock,
+      title: 'Multi-round interview tracking',
+      description: 'Follow every round from shortlist to final offer, with schedules and status updates in one timeline.',
+    },
+    {
+      icon: BarChart3,
+      title: 'Placement analytics',
+      description: 'Branch-wise placement rates, top recruiters, and package trends for officers, updated live.',
+    },
+  ];
+
+  const roles = [
+    { icon: GraduationCap, name: 'Students', description: 'Apply, track, and get hired.' },
+    { icon: Building2, name: 'Recruiters', description: 'Post drives and shortlist the right candidates.' },
+    { icon: Users, name: 'Placement officers', description: 'Manage the whole season with live data.' },
+  ];
+
+  const statsCards = [
+    { value: '28.5 LPA', label: 'Highest Package Offered' },
+    { value: '100%', label: 'Automated Eligibility Check' },
+    { value: '3NF', label: 'Strict Relational Schema' },
+    { value: '12+', label: 'Connected DB Entities' },
+  ];
+
   return (
     <div className="min-h-screen bg-background flex flex-col selection:bg-accent selection:text-primary-foreground">
       {/* Top Navbar */}
@@ -26,7 +55,7 @@ export default function LandingPage() {
             <span className="text-xl font-extrabold text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <nav aria-label="Primary navigation" className="flex items-center gap-3">
             <Link
               to="/login"
               className="px-4 py-2 rounded-lg text-sm font-semibold text-foreground hover:text-primary hover:bg-muted transition-all"
@@ -40,24 +69,24 @@ export default function LandingPage() {
               <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
+          </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
-        <BackgroundPaths opacity={0.35} count={16} />
+      <section className="relative overflow-hidden bg-background pt-16 pb-20 lg:pt-24 lg:pb-32">
+        <BackgroundPaths opacity={0.3} count={16} colorClass="text-primary" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent border border-border text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-            Next-Gen Campus Placement & DBMS Management System
+            CAMPUS PLACEMENT PORTAL · SEASON 2026
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight max-w-4xl mx-auto leading-tight">
-            Digitize Campus Placements with <span className=" text-primary   ">Relational Precision</span>
+          <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight max-w-4xl mx-auto leading-tight">
+            Every placement, <span className="text-primary">one platform.</span>
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-normal">
-            A comprehensive, 3NF-normalized platform bridging students, corporate recruiters, and college placement officers. Automate eligibility checks, streamline multi-round interviews, and access placement analytics.
+            CampusHire connects students, recruiters, and placement officers in a single place. Eligibility is checked automatically, interviews are scheduled without clashes, and results show up in real time.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -76,96 +105,54 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          {/* Key Metrics Banner */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <div className="bg-card p-5 rounded-xl border border-border shadow-sm">
-              <p className="text-3xl font-extrabold text-primary">28.5 LPA</p>
-              <p className="text-xs text-muted-foreground mt-1 font-medium">Highest Package Offered</p>
-            </div>
-            <div className="bg-card p-5 rounded-xl border border-border shadow-sm">
-              <p className="text-3xl font-extrabold text-primary">100%</p>
-              <p className="text-xs text-muted-foreground mt-1 font-medium">Automated Eligibility Check</p>
-            </div>
-            <div className="bg-card p-5 rounded-xl border border-border shadow-sm">
-              <p className="text-3xl font-extrabold text-primary">3NF</p>
-              <p className="text-xs text-muted-foreground mt-1 font-medium">Strict Relational Schema</p>
-            </div>
-            <div className="bg-card p-5 rounded-xl border border-border shadow-sm">
-              <p className="text-3xl font-extrabold text-primary">12+</p>
-              <p className="text-xs text-muted-foreground mt-1 font-medium">Connected DB Entities</p>
-            </div>
+            {statsCards.map((stat) => (
+              <div key={stat.label} className="bg-card p-5 rounded-xl border border-border shadow-sm">
+                <p className="text-3xl font-extrabold text-primary font-mono">{stat.value}</p>
+                <p className="text-xs text-muted-foreground mt-1 font-medium">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Tri-Role Architecture Highlights */}
-      <section className="py-16 bg-card border-y border-border">
+      <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">Dedicated Portals for Every Stakeholder</h2>
-            <p className="text-muted-foreground mt-3 text-sm">Role-based authorization and customized workflows designed for smooth recruitment operations.</p>
+            <h2 className="text-3xl font-bold text-foreground tracking-tight">Everything your placement season needs</h2>
+            <p className="text-muted-foreground mt-3 text-sm">Clear workflows for every stage, from eligibility to final offer.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Student */}
-            <div className="bg-background rounded-xl p-7 border border-border hover:border-border transition-all flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center mb-5">
-                  <GraduationCap className="w-6 h-6" />
+            {features.map(({ icon: Icon, title, description }) => (
+              <article
+                key={title}
+                className="bg-card rounded-xl p-7 border border-border shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md motion-reduce:transform-none"
+              >
+                <div className="w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center mb-5">
+                  <Icon className="w-6 h-6" aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Student Dashboard</h3>
-                <p className="text-sm text-muted-foreground mt-2">Personalized career hub with automated eligibility checks and application pipelines.</p>
-                <ul className="mt-5 space-y-2 text-xs text-foreground">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> CGPA & backlog validation</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> One-click job applications</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Multi-stage interview status</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Resume & skill profiling</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-border">
-                <span className="text-xs font-semibold text-primary">Demo: aarav.sharma@college.edu</span>
-              </div>
-            </div>
+                <h3 className="text-xl font-bold text-foreground">{title}</h3>
+                <p className="text-sm text-muted-foreground mt-2">{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Recruiter */}
-            <div className="bg-background rounded-xl p-7 border border-border hover:border-border transition-all flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center mb-5">
-                  <Building2 className="w-6 h-6" />
+      <section className="py-16 bg-card border-y border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-foreground tracking-tight text-center mb-10">Built for every role</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {roles.map(({ icon: Icon, name, description }) => (
+              <div key={name} className="flex items-start gap-3">
+                <Icon className="w-5 h-5 mt-0.5 text-primary flex-shrink-0" aria-hidden="true" />
+                <div>
+                  <h3 className="font-bold text-foreground">{name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Company Portal</h3>
-                <p className="text-sm text-muted-foreground mt-2">Publish recruitment drives, filter candidates, and manage interview pipelines.</p>
-                <ul className="mt-5 space-y-2 text-xs text-foreground">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Post drives with custom cutoffs</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Configure multi-round stages</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Filter candidates by CGPA & branch</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Schedule interviews & issue offers</li>
-                </ul>
               </div>
-              <div className="mt-6 pt-4 border-t border-border">
-                <span className="text-xs font-semibold text-primary">Demo: recruiter@google.com</span>
-              </div>
-            </div>
-
-            {/* Admin */}
-            <div className="bg-background rounded-xl p-7 border border-border hover:border-border transition-all flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-accent text-primary flex items-center justify-center mb-5">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">Placement Officer</h3>
-                <p className="text-sm text-muted-foreground mt-2">Institutional oversight, recruiter verification, drive approvals, and analytics.</p>
-                <ul className="mt-5 space-y-2 text-xs text-foreground">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Real-time placement percentage</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Branch-wise comparative analytics</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Verify companies & moderate jobs</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Exportable placement reports</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-border">
-                <span className="text-xs font-semibold text-primary">Demo: admin@campushire.edu</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -173,12 +160,13 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="mt-auto bg-card text-muted-foreground py-10 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-2 text-primary-foreground font-bold">
+          <div className="flex items-center gap-2 text-foreground font-bold">
             <GraduationCap className="w-4 h-4 text-primary" />
             <span>CampusHire Management System</span>
           </div>
-          <div>
-            Built with React, Vite, Node.js, Express, and MySQL (3NF).
+          <div className="text-center sm:text-right">
+            <p>Built on a normalized relational schema with trigger-enforced eligibility rules, transactional offer handling, and indexed analytics queries.</p>
+            <p className="mt-1">DBMS Academic Project © 2026</p>
           </div>
         </div>
       </footer>
