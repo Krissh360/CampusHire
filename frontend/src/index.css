@@ -86,6 +86,17 @@
       border-radius: calc(var(--radius) * 0.6) !important;
     }
 
+    button,
+    .pressable,
+    a[class*="bg-primary"],
+    a[class*="bg-card"] {
+      border-radius: calc(var(--radius) * 0.6) !important;
+    }
+
+    .card-shape {
+      border-radius: calc(var(--radius) * 0.4) !important;
+    }
+
     .interactive-card {
       transition: transform 150ms ease, box-shadow 150ms ease;
     }

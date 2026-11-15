@@ -151,7 +151,7 @@ export default function StudentDashboard() {
             <p className="text-3xl font-extrabold text-foreground mt-1 tracking-tight">{stats.totalApplied}</p>
             <p className="text-[11px] text-muted-foreground mt-1">Across all drives</p>
           </div>
-          <div className="w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <FileText className="w-6 h-6" />
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function StudentDashboard() {
             <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.shortlisted}</p>
             <p className="text-[11px] text-muted-foreground mt-1">Drives in review</p>
           </div>
-          <div className="w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <CheckCircle2 className="w-6 h-6" />
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function StudentDashboard() {
             <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.interviewScheduled}</p>
             <p className="text-[11px] text-muted-foreground mt-1">Scheduled next</p>
           </div>
-          <div className="w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <Calendar className="w-6 h-6" />
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function StudentDashboard() {
             <p className="text-3xl font-extrabold text-primary mt-1 tracking-tight">{stats.selectedOffers}</p>
             <p className="text-[11px] text-muted-foreground mt-1">Offers accepted</p>
           </div>
-          <div className="w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
+          <div className="card-shape w-11 h-11 rounded-lg bg-accent text-accent-foreground flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
         </div>
@@ -314,25 +314,25 @@ export default function StudentDashboard() {
               <Link to="/student/profile" className="text-xs font-bold text-primary hover:text-primary">Edit</Link>
             </div>
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-2.5 rounded-lg bg-background border border-border">
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
                 <span className="text-muted-foreground block text-[11px]">CGPA</span>
                 <span className="text-base font-extrabold font-mono text-foreground">{cgpa.toFixed(2)}</span>
                 <div className="mt-2 h-1.5 rounded-full bg-muted overflow-hidden">
                   <div className="h-full rounded-full bg-primary" style={{ width: `${Math.min(Math.max(cgpa * 10, 0), 100)}%` }} />
                 </div>
               </div>
-              <div className="p-2.5 rounded-lg bg-background border border-border">
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
                 <span className="text-muted-foreground block text-[11px]">Branch</span>
                 <span className="text-base font-extrabold font-mono text-foreground">{user?.branch || 'CSE'}</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-background border border-border">
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
                 <span className="text-muted-foreground block text-[11px]">Active Backlogs</span>
                 <span className={`inline-flex items-center gap-1 text-base font-extrabold font-mono ${activeBacklogs === 0 ? 'text-primary' : 'text-destructive'}`}>
                   {activeBacklogs}
                   {activeBacklogs === 0 && <span className="text-[10px] font-sans font-semibold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">Clear</span>}
                 </span>
               </div>
-              <div className="p-2.5 rounded-lg bg-background border border-border">
+              <div className="card-shape p-2.5 rounded-lg bg-background border border-border">
                 <span className="text-muted-foreground block text-[11px]">Graduation</span>
                 <span className="text-base font-extrabold font-mono text-foreground">{user?.graduation_year || 2026}</span>
               </div>
