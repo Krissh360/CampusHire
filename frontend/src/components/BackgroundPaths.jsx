@@ -23,41 +23,30 @@ function FloatingPaths({ position, count }) {
   );
 
   return (
-    <svg
+    <motion.svg
       className="absolute inset-0 h-full w-full"
       viewBox="0 0 696 316"
       preserveAspectRatio="xMidYMid slice"
       fill="none"
+      initial={{ x: 0, opacity: 0.55 }}
+      animate={reduceMotion ? { x: 0, opacity: 0.55 } : { x: [0, 12, 0], opacity: [0.35, 0.6, 0.35] }}
+      transition={
+        reduceMotion
+          ? { duration: 0 }
+          : { duration: paths[0]?.duration || 24, repeat: Infinity, ease: "linear" }
+      }
+      style={{ willChange: "transform, opacity" }}
     >
       {paths.map((p) => (
-        <motion.path
+        <path
           key={p.id}
           d={p.d}
           stroke="currentColor"
           strokeWidth={p.width}
           strokeOpacity={0.1 + p.id * 0.03}
-          initial={{ pathLength: 0.3, opacity: 0.6 }}
-          animate={
-            reduceMotion
-              ? { pathLength: 1, opacity: 0.5 }
-              : {
-                  pathLength: 1,
-                  opacity: [0.3, 0.6, 0.3],
-                  pathOffset: [0, 1, 0],
-                }
-          }
-          transition={
-            reduceMotion
-              ? { duration: 0 }
-              : {
-                  duration: p.duration,
-                  repeat: Infinity,
-                  ease: "linear",
-                }
-          }
         />
       ))}
-    </svg>
+    </motion.svg>
   );
 }
 
