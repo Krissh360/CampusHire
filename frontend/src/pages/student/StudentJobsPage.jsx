@@ -172,7 +172,7 @@ export default function StudentJobsPage() {
           </button>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredJobs.map((job) => {
             const isEligible = job.eligibility_check ? job.eligibility_check.is_eligible : true;
             return (
