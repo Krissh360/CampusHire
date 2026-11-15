@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { GraduationCap, Building2, User, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
+import BackgroundPaths from '../components/BackgroundPaths';
 
 export default function RegisterPage() {
   const [role, setRole] = useState('student'); // 'student' or 'company'
@@ -79,8 +80,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-xl text-center">
+    <div className="relative overflow-hidden min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <BackgroundPaths opacity={0.35} />
+      <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-xl text-center">
         <Link to="/" className="inline-flex items-center gap-2 mb-4">
           <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
             <GraduationCap className="w-6 h-6" />
@@ -115,7 +117,7 @@ export default function RegisterPage() {
         </div>
       </div>
 
-      <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-xl">
+      <div className="relative z-10 mt-6 sm:mx-auto sm:w-full sm:max-w-xl">
         <div className="bg-card py-8 px-6 sm:px-10 shadow-sm rounded-xl border border-border">
           {error && (
             <div className="mb-6 p-4 rounded-lg bg-destructive/10 border border-destructive/30 flex items-start gap-3">
