@@ -13,8 +13,7 @@ import {
   ArrowRight,
   X,
   Layers,
-  Send,
-  Sparkles
+  Send
 } from 'lucide-react';
 
 export default function StudentJobsPage() {
@@ -288,7 +287,6 @@ export default function StudentJobsPage() {
             {/* Academic Eligibility Breakdown */}
             <div className="p-4 rounded-xl bg-background border border-border space-y-3">
               <h4 className="text-xs font-bold text-foreground uppercase tracking-wider flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-primary" />
                 Eligibility Requirements Checklist
               </h4>
               <div className="grid grid-cols-2 gap-3 text-xs">

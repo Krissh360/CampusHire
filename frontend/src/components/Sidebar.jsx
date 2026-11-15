@@ -66,7 +66,7 @@ export default function Sidebar() {
       {/* Brand Header */}
       <div className="p-6 border-b border-border">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full token-primary-surface flex items-center justify-center shadow-sm">
+          <div className="app-logo w-10 h-10 rounded-full token-primary-surface flex items-center justify-center shadow-sm">
             <GraduationCap className="w-6 h-6" />
           </div>
           <div>

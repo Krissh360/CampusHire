@@ -9,8 +9,7 @@ import {
   Calendar,
   AlertCircle,
   CheckCircle,
-  Layers,
-  Sparkles
+  Layers
 } from 'lucide-react';
 
 export default function CompanyPostJobPage() {
@@ -196,7 +195,6 @@ export default function CompanyPostJobPage() {
         {/* Step 2: Academic Eligibility Engine */}
         <div className="bg-card rounded-xl border border-border p-6 sm:p-8 shadow-sm space-y-5">
           <div className="flex items-center gap-2.5 border-b border-border pb-3">
-            <Sparkles className="w-5 h-5 text-primary" />
             <h3 className="text-base font-bold text-foreground">2. Automated Eligibility Criteria</h3>
           </div>
 

@@ -84,7 +84,7 @@ export default function RegisterPage() {
       <BackgroundPaths opacity={0.35} count={16} />
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-xl text-center">
         <Link to="/" className="inline-flex items-center gap-2 mb-4">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
+          <div className="app-logo w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
             <GraduationCap className="w-6 h-6" />
           </div>
           <span className="text-2xl font-black text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>

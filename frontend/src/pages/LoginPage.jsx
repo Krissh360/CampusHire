@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { GraduationCap, Lock, Mail, ArrowRight, AlertCircle, Sparkles } from 'lucide-react';
+import { GraduationCap, Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
 import BackgroundPaths from '../components/BackgroundPaths';
 
 export default function LoginPage() {
@@ -42,7 +42,7 @@ export default function LoginPage() {
       <BackgroundPaths opacity={0.35} count={16} />
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md text-center">
         <Link to="/" className="inline-flex items-center gap-2 mb-4">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
+          <div className="app-logo w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
             <GraduationCap className="w-6 h-6" />
           </div>
           <span className="text-2xl font-black text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>
@@ -118,7 +118,6 @@ export default function LoginPage() {
           {/* Quick Demo Logins Section */}
           <div className="mt-8 pt-6 border-t border-border">
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-4 h-4 text-chart-3" />
               <span className="text-xs font-bold text-foreground uppercase tracking-wide">One-Click Academic Demo Logins</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">

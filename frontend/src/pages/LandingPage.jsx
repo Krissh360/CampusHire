@@ -10,8 +10,7 @@ import {
   TrendingUp,
   Award,
   Users2,
-  Layers,
-  Sparkles
+  Layers
 } from 'lucide-react';
 
 export default function LandingPage() {
@@ -21,7 +20,7 @@ export default function LandingPage() {
       <header className="bg-card/80 backdrop-blur-md border-b border-border sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
+            <div className="app-logo w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm">
               <GraduationCap className="w-5 h-5" />
             </div>
             <span className="text-xl font-extrabold text-foreground tracking-tight">Campus<span className="text-primary">Hire</span></span>
@@ -50,7 +49,6 @@ export default function LandingPage() {
         <BackgroundPaths opacity={0.35} count={16} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent border border-border text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
             Next-Gen Campus Placement & DBMS Management System
           </div>
 
